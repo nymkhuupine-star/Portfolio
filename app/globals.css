@@ -2,13 +2,61 @@
 
 :root {
   color-scheme: light;
-  --background: #ffffff;
-  --foreground: #0a0a0a;
+  --background: oklch(100% 0 0);
+  --foreground: oklch(21% 0.034 264.665);
+
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(21% 0.034 264.665);
+
+  --muted: oklch(97% 0.006 260);
+  --muted-foreground: oklch(50% 0.02 260);
+
+  --border: oklch(90% 0.01 260);
+
+  --secondary: oklch(96% 0.012 260);
+  --secondary-foreground: oklch(21% 0.034 264.665);
+
+  --primary: oklch(37.2% 0.044 257.287);
+  --primary-foreground: oklch(100% 0 0);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(14% 0.02 264.665);
+  --foreground: oklch(98% 0.004 264.665);
+
+  --card: oklch(18% 0.02 264.665);
+  --card-foreground: oklch(98% 0.004 264.665);
+
+  --muted: oklch(22% 0.02 264.665);
+  --muted-foreground: oklch(72% 0.02 260);
+
+  --border: oklch(30% 0.02 264.665);
+
+  --secondary: oklch(24% 0.02 264.665);
+  --secondary-foreground: oklch(98% 0.004 264.665);
+
+  --primary: oklch(75% 0.11 257.287);
+  --primary-foreground: oklch(18% 0.02 264.665);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --font-sans: var(--font-inter);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
