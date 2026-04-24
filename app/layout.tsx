@@ -43,12 +43,6 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
-        <Script
-          id="model-viewer"
-          src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-          type="module"
-          strategy="afterInteractive"
-        />
         <div className="flex min-h-full flex-col">{children}</div>
       </body>
     </html>

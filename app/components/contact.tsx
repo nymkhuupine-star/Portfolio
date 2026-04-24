@@ -1,5 +1,3 @@
-import ContactRobot from "./contact-robot";
-
 export function Contact() {
   return (
     <section id="contact" className="px-6 py-24">
@@ -43,8 +41,6 @@ export function Contact() {
             <span className="hidden sm:inline text-foreground/30">•</span>
             <span>Улаанбаатар, Монгол</span>
           </div>
-
-          <ContactRobot />
         </div>
 
         {/* RIGHT */}

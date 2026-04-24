@@ -51,7 +51,7 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="relative mt-10 w-full max-w-sm overflow-visible pt-50 md:mt-0 md:w-[42%]">
+        <div className="relative mt-10 w-full max-w-sm overflow-visible pt-40 md:mt-0 md:w-[42%]">
           <div className="relative mx-auto w-[90%]">
             <Image
               src="/tablet.png"
@@ -109,7 +109,7 @@ export default function HeroSection() {
             alt="Earphones"
             width={280}
             height={888}
-            className="pointer-events-none absolute right-2 top-[-10px] z-20 w-[22%] rotate-6 pt-53 md:right-4 md:w-[24%]"
+            className="pointer-events-none absolute right-2 top-[-51px] z-20 w-[22%] rotate-6 pt-53 md:right-4 md:w-[24%]"
             style={{ clipPath: "inset(12% 0 0 0)" }}
           />
         </div>

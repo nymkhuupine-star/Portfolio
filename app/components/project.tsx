@@ -1,5 +1,4 @@
-import { ExternalLink,  Folder } from "lucide-react"
-import Link from "next/link"
+import ProjectsStack from "./projects-stack"
 
 const projects = [
   {
@@ -39,55 +38,7 @@ export function Projects() {
           Миний хийсэн зарим төслүүд. Бүгд нь бодит асуудлыг шийдвэрлэхэд чиглэсэн.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <article 
-              key={index} 
-              className="group p-6 rounded-xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-xl flex flex-col"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Folder className="w-6 h-6 text-primary" />
-                </div>
-                <div className="flex items-center gap-3">
-                  <Link
-                    href={project.github}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                    aria-label="GitHub"
-                  >
-               
-                  </Link>
-                  <Link
-                    href={project.live}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                    aria-label="Live Demo"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </Link>
-                </div>
-              </div>
-              
-              <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                {project.title}
-              </h3>
-              
-              <p className="text-sm text-muted-foreground leading-relaxed flex-grow mb-6">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-3 py-1 bg-secondary text-muted-foreground rounded-full font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+        <ProjectsStack projects={projects} />
       </div>
     </section>
   )
