@@ -18,7 +18,6 @@ export default function Home() {
       <Skills/>
       <Contact/>
       </main>
-
       <Footer />
     </>
   );

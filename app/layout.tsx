@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { BackgroundLines } from "./components/background-lines";
+import LoadingScreen from "./components/loading-screen";
 
 const themeInitScript = `(() => {
   try {
@@ -39,11 +41,15 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-background text-foreground font-sans">
+      <body className="min-h-full text-foreground font-sans">
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
-        <div className="flex min-h-full flex-col">{children}</div>
+        <LoadingScreen />
+        <div className="site-background flex min-h-full flex-col">
+          <BackgroundLines />
+          {children}
+        </div>
       </body>
     </html>
   );
