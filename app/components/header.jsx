@@ -11,7 +11,6 @@ export default function Header() {
               {"<B/>"}
             </span>
           </a>
-
           <nav className="hidden flex-1 items-center justify-center gap-10 text-sm font-medium text-foreground/70 md:flex">
             <a href="#about" className="transition-colors hover:text-foreground">
               Миний тухай
