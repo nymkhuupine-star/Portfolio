@@ -99,7 +99,7 @@ export default function ProjectsStack({ projects }: { projects: Project[] }) {
         setIsAnimatingOut(false)
       }, SWIPE_OUT_MS)
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
     [projects.length, setDragWithRef],
   )
 
@@ -119,7 +119,7 @@ export default function ProjectsStack({ projects }: { projects: Project[] }) {
     }
 
     cycleNext(current.x > 0 ? 1 : -1)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [cycleNext, setDragWithRef])
 
   const onPointerDown = useCallback(
@@ -138,7 +138,7 @@ export default function ProjectsStack({ projects }: { projects: Project[] }) {
       event.currentTarget.setPointerCapture(event.pointerId)
       event.preventDefault()
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
     [canInteract, setDragWithRef],
   )
 

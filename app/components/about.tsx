@@ -50,7 +50,7 @@ export function About() {
             {highlights.map((item, index) => (
               <div 
                 key={index}
-                className="flex gap-5 p-6 rounded-xl bg-card border border-border/50 hover:border-primary/30 transition-colors duration-300"
+                className="flex gap-5 p-6 rounded-[28px] bg-card hazy-border transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                   <item.icon className="w-6 h-6 text-primary" />

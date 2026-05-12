@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   color-scheme: light;
@@ -66,18 +67,281 @@
     "Liberation Mono", "Courier New", monospace;
 }
 
-@keyframes ls-spin   { to { transform: rotate(360deg);  } }
+@keyframes ls-spin { to { transform: rotate(360deg); } }
 @keyframes ls-unspin { to { transform: rotate(-360deg); } }
-@keyframes ls-pulse  { 0%,100%{ opacity:.6 } 50%{ opacity:1 } }
+@keyframes ls-pulse { 0%,100%{ opacity:.6 } 50%{ opacity:1 } }
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
   overflow-x: hidden;
   color: var(--foreground);
+}
+
+@layer utilities {
+  .hazy-border {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hazy-border {
+    --hazy-yellow: oklch(87.9% 0.169 91.605);
+    --hazy-blue: oklch(78% 0.13 240);
+    --hazy-pink: oklch(83% 0.12 15);
+    --hazy-mint: oklch(86% 0.12 165);
+  }
+
+  .hazy-border::before,
+  .hazy-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hazy-border::before {
+    inset: -2px;
+    padding: 2px;
+    background: conic-gradient(
+      from 180deg,
+      color-mix(in oklab, var(--hazy-pink) 70%, transparent),
+      color-mix(in oklab, var(--hazy-yellow) 78%, transparent),
+      color-mix(in oklab, var(--hazy-blue) 72%, transparent),
+      color-mix(in oklab, var(--hazy-mint) 62%, transparent),
+      color-mix(in oklab, var(--hazy-pink) 70%, transparent)
+    );
+    filter: blur(11px) saturate(1.28);
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  .hazy-border::after {
+    padding: 1px;
+    background: conic-gradient(
+      from 180deg,
+      color-mix(in oklab, var(--hazy-pink) 55%, transparent),
+      color-mix(in oklab, var(--hazy-yellow) 60%, transparent),
+      color-mix(in oklab, var(--hazy-blue) 55%, transparent),
+      color-mix(in oklab, var(--hazy-mint) 48%, transparent),
+      color-mix(in oklab, var(--hazy-pink) 55%, transparent)
+    );
+    opacity: 0.55;
+    mix-blend-mode: multiply;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  .dark .hazy-border::before {
+    opacity: 0.75;
+    filter: blur(10px) saturate(1.25);
+    mix-blend-mode: screen;
+  }
+
+  .dark .hazy-border::after {
+    opacity: 0.42;
+    mix-blend-mode: screen;
+  }
+
+  .hazy-border:hover::before {
+    opacity: 1;
+  }
+
+  .hazy-border:hover::after {
+    opacity: 0.7;
+  }
+}
+
+/* Puzzle Pieces (Skills) */
+@property --glow {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.puzzle-scroller {
+  --puzzle-core: 260px;
+  --puzzle-tab: 30px;
+  --puzzle-size: 320px;
+  --puzzle-overlap: 60px;
+  --puzzle-svg-pad: 24px;
+  position: relative;
+  padding-block: 56px 68px;
+  padding-inline: calc(var(--puzzle-tab) + var(--puzzle-svg-pad) + 24px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: calc(var(--puzzle-tab) + var(--puzzle-svg-pad) + 24px);
+}
+
+.puzzle-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.puzzle-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  justify-content: safe center;
+  align-items: stretch;
+  min-width: max-content;
+  margin-inline: auto;
+  gap: 0;
+}
+
+.puzzle-piece {
+  --glow: 0;
+  --puzzle-stroke: var(--border);
+  position: relative;
+  width: var(--puzzle-size);
+  height: var(--puzzle-size);
+  flex: 0 0 auto;
+  cursor: default;
+  user-select: none;
+  outline: none;
+  scroll-snap-align: center;
+  transition: --glow 220ms ease;
+}
+
+.puzzle-piece:not(:first-child) {
+  margin-left: calc(-1 * var(--puzzle-overlap));
+}
+
+.puzzle-piece:hover,
+.puzzle-piece:focus-within {
+  z-index: 60 !important;
+}
+
+.puzzle-piece:hover,
+.puzzle-piece:focus-visible,
+.puzzle-piece:focus-within {
+  --glow: 1;
+}
+
+.puzzle-piece:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--puzzle-stroke) 42%, transparent);
+  outline-offset: 8px;
+}
+
+.puzzle-shape {
+  position: absolute;
+  inset: calc(-1 * var(--puzzle-svg-pad));
+  z-index: 0;
+  pointer-events: none;
+  filter:
+    drop-shadow(0 16px 46px rgba(0, 0, 0, 0.32))
+    drop-shadow(0 0 calc(10px + (var(--glow) * 14px)) color-mix(in oklab, currentColor 55%, transparent));
+}
+
+.puzzle-fill {
+  opacity: 0.92;
+}
+
+.puzzle-stroke {
+  stroke-opacity: calc(0.66 + (var(--glow) * 0.18));
+}
+
+.puzzle-glow {
+  opacity: calc(0.08 + (var(--glow) * 0.72));
+  filter: drop-shadow(0 0 calc(10px + (var(--glow) * 20px)) color-mix(in oklab, currentColor 70%, transparent));
+}
+
+.puzzle-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  clip-path: var(--puzzle-clip);
+  padding: 54px 44px 44px;
+  background: color-mix(in oklab, var(--card) 78%, transparent);
+  backdrop-filter: blur(10px) saturate(1.14);
+  -webkit-backdrop-filter: blur(10px) saturate(1.14);
+}
+
+.dark .puzzle-inner {
+  background: color-mix(in oklab, var(--card) 66%, transparent);
+}
+
+.puzzle-inner::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background:
+    radial-gradient(520px 360px at 20% 14%, color-mix(in oklab, var(--puzzle-stroke) 22%, transparent), transparent 64%),
+    radial-gradient(520px 360px at 90% 86%, color-mix(in oklab, var(--puzzle-stroke) 18%, transparent), transparent 62%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.02) 55%, rgba(0, 0, 0, 0.12));
+  opacity: calc(0.46 + (var(--glow) * 0.22));
+  pointer-events: none;
+}
+
+.puzzle-inner > * {
+  position: relative;
+}
+
+.puzzle-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: var(--puzzle-stroke);
+  background: color-mix(in oklab, var(--puzzle-stroke) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--puzzle-stroke) 22%, transparent);
+  box-shadow:
+    0 0 calc(10px + (var(--glow) * 16px)) color-mix(in oklab, var(--puzzle-stroke) 28%, transparent);
+}
+
+.puzzle-title {
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  margin-bottom: 16px;
+}
+
+.puzzle-skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.puzzle-skill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: color-mix(in oklab, var(--foreground) 78%, var(--muted-foreground));
+  border: 1px solid color-mix(in oklab, var(--puzzle-stroke) 20%, transparent);
+  background: color-mix(in oklab, var(--puzzle-stroke) 10%, transparent);
+  padding: 7px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.puzzle-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--puzzle-stroke);
+  box-shadow: 0 0 14px color-mix(in oklab, var(--puzzle-stroke) 40%, transparent);
+  flex-shrink: 0;
 }
 
 .site-background {

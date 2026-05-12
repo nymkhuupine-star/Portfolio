@@ -6,9 +6,15 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-transparent">
       <div className="mx-auto w-full max-w-6xl px-6 py-4">
         <div className="flex h-16 items-center justify-between gap-4 rounded-full border border-foreground/10 bg-background/35 px-4 text-foreground shadow-[0_10px_30px_rgba(0,0,0,0.22)] backdrop-blur-md sm:px-6">
-          <a href="#top" className="shrink-0">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-foreground text-base font-bold text-background">
-              {"<B/>"}
+          <a
+            href="#top"
+            aria-label="DEV PORTFOLIO - Back to top"
+            className="shrink-0 select-none rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
+          >
+            <span
+              className="font-serif text-[22px] leading-none text-foreground sm:text-[26px]"
+            >
+              DEV PORTFOLIO
             </span>
           </a>
           <nav className="hidden flex-1 items-center justify-center gap-10 text-sm font-medium text-foreground/70 md:flex">
@@ -27,7 +33,7 @@ export default function Header() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-3">
-            <ThemeToggle />
+            <ThemeToggle/>
             <a
               href="#contact"
               className="inline-flex items-center justify-center rounded-full bg-foreground px-6 py-2.5 text-sm font-semibold text-background shadow-sm transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"

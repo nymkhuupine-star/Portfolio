@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { BackgroundLines } from "./components/background-lines";
 import LoadingScreen from "./components/loading-screen";
 
 const themeInitScript = `(() => {
@@ -47,7 +46,6 @@ export default function RootLayout({
         </Script>
         <LoadingScreen />
         <div className="site-background flex min-h-full flex-col">
-          <BackgroundLines />
           {children}
         </div>
       </body>

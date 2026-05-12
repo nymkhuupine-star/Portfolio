@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const STORAGE_KEY = "theme";
 
@@ -11,8 +11,17 @@ function getSystemTheme() {
 }
 
 function getStoredTheme() {
-  const value = localStorage.getItem(STORAGE_KEY);
-  return value === "dark" || value === "light" ? value : null;
+  try {
+    const value = localStorage.getItem(STORAGE_KEY);
+    return value === "dark" || value === "light" ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function resolveTheme() {
+  const stored = getStoredTheme();
+  return stored ?? getSystemTheme();
 }
 
 function applyTheme(theme) {
@@ -62,32 +71,41 @@ function MoonIcon() {
 }
 
 export default function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState("light");
-
   useEffect(() => {
-    setMounted(true);
-    const stored = getStoredTheme();
-    const resolved = stored ?? getSystemTheme();
-    setTheme(resolved);
-    applyTheme(resolved);
+    applyTheme(resolveTheme());
 
     const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
+    const onMediaChange = () => {
       if (getStoredTheme()) return;
-      const next = media.matches ? "dark" : "light";
-      setTheme(next);
-      applyTheme(next);
+      applyTheme(getSystemTheme());
     };
 
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
+    if (media.addEventListener) {
+      media.addEventListener("change", onMediaChange);
+    } else {
+      media.addListener(onMediaChange);
+    }
+
+    const onStorage = (event) => {
+      if (event.key && event.key !== STORAGE_KEY) return;
+      applyTheme(resolveTheme());
+    };
+    window.addEventListener("storage", onStorage);
+
+    return () => {
+      if (media.removeEventListener) {
+        media.removeEventListener("change", onMediaChange);
+      } else {
+        media.removeListener(onMediaChange);
+      }
+      window.removeEventListener("storage", onStorage);
+    };
   }, []);
 
   const toggle = () => {
-    const next = theme === "dark" ? "light" : "dark";
+    const isDark = document.documentElement.classList.contains("dark");
+    const next = isDark ? "light" : "dark";
     localStorage.setItem(STORAGE_KEY, next);
-    setTheme(next);
     applyTheme(next);
   };
 
@@ -96,10 +114,13 @@ export default function ThemeToggle() {
       type="button"
       aria-label="Toggle theme"
       onClick={toggle}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white shadow-sm transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/10 bg-foreground/[0.03] text-foreground/70 shadow-sm transition-colors hover:bg-foreground/[0.06] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:focus-visible:ring-white/40"
     >
-      <span className={mounted ? "block" : "block opacity-0"}>
-        {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+      <span className="block dark:hidden" aria-hidden="true">
+        <MoonIcon />
+      </span>
+      <span className="hidden dark:block" aria-hidden="true">
+        <SunIcon />
       </span>
     </button>
   );

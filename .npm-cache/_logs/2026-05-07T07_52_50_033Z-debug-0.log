@@ -1,0 +1,405 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v22.17.1
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Dell\Desktop\Portfolio\.npmrc
+5 silly config load:file:C:\Users\Dell\.npmrc
+6 silly config load:file:C:\Users\Dell\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install framer-motion
+8 verbose argv "install" "framer-motion" "--cache" ".\\.npm-cache" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:C:\Users\Dell\Desktop\Portfolio\.npm-cache\_logs\2026-05-07T07_52_50_033Z-
+10 verbose logfile C:\Users\Dell\Desktop\Portfolio\.npm-cache\_logs\2026-05-07T07_52_50_033Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 silly idealTree buildDeps
+14 silly fetch manifest framer-motion@*
+15 silly packumentCache full:https://registry.npmjs.org/framer-motion cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/framer-motion 267ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/framer-motion set size:undefined disposed:false
+18 silly fetch manifest @emotion/is-prop-valid@*
+19 silly packumentCache full:https://registry.npmjs.org/@emotion%2fis-prop-valid cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/@emotion%2fis-prop-valid 595ms (cache miss)
+21 silly packumentCache full:https://registry.npmjs.org/@emotion%2fis-prop-valid set size:undefined disposed:false
+22 silly fetch manifest react@19.2.4
+23 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+24 http fetch GET 200 https://registry.npmjs.org/react 173ms (cache miss)
+25 silly packumentCache full:https://registry.npmjs.org/react set size:undefined disposed:false
+26 silly fetch manifest react-dom@19.2.4
+27 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/react-dom 408ms (cache miss)
+29 silly packumentCache full:https://registry.npmjs.org/react-dom set size:undefined disposed:false
+30 silly placeDep ROOT framer-motion@12.38.0 OK for: portfolio@0.1.0 want: *
+31 silly fetch manifest motion-dom@^12.38.0
+32 silly packumentCache full:https://registry.npmjs.org/motion-dom cache-miss
+33 silly fetch manifest motion-utils@^12.36.0
+34 silly packumentCache full:https://registry.npmjs.org/motion-utils cache-miss
+35 http fetch GET 200 https://registry.npmjs.org/motion-dom 30ms (cache miss)
+36 silly packumentCache full:https://registry.npmjs.org/motion-dom set size:undefined disposed:false
+37 http fetch GET 200 https://registry.npmjs.org/motion-utils 285ms (cache miss)
+38 silly packumentCache full:https://registry.npmjs.org/motion-utils set size:undefined disposed:false
+39 silly placeDep ROOT motion-dom@12.38.0 OK for: framer-motion@12.38.0 want: ^12.38.0
+40 silly placeDep ROOT motion-utils@12.36.0 OK for: framer-motion@12.38.0 want: ^12.36.0
+41 silly reify moves {}
+42 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-wasm32-wasi
+43 silly reify mark deleted [
+43 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-wasm32-wasi'
+43 silly reify ]
+44 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-win32-arm64-msvc
+45 silly reify mark deleted [
+45 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-win32-arm64-msvc'
+45 silly reify ]
+46 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-linux-x64-musl
+47 silly reify mark deleted [
+47 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-linux-x64-musl'
+47 silly reify ]
+48 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-linux-x64-gnu
+49 silly reify mark deleted [
+49 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-linux-x64-gnu'
+49 silly reify ]
+50 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-linux-arm64-musl
+51 silly reify mark deleted [
+51 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-linux-arm64-musl'
+51 silly reify ]
+52 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-linux-arm64-gnu
+53 silly reify mark deleted [
+53 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-linux-arm64-gnu'
+53 silly reify ]
+54 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-linux-arm-gnueabihf
+55 silly reify mark deleted [
+55 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-linux-arm-gnueabihf'
+55 silly reify ]
+56 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-freebsd-x64
+57 silly reify mark deleted [
+57 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-freebsd-x64'
+57 silly reify ]
+58 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-darwin-x64
+59 silly reify mark deleted [
+59 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-darwin-x64'
+59 silly reify ]
+60 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-darwin-arm64
+61 silly reify mark deleted [
+61 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-darwin-arm64'
+61 silly reify ]
+62 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\lightningcss-android-arm64
+63 silly reify mark deleted [
+63 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\lightningcss-android-arm64'
+63 silly reify ]
+64 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-win32-ia32-msvc
+65 silly reify mark deleted [
+65 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-win32-ia32-msvc'
+65 silly reify ]
+66 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-win32-arm64-msvc
+67 silly reify mark deleted [
+67 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-win32-arm64-msvc'
+67 silly reify ]
+68 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-wasm32-wasi
+69 silly reify mark deleted [
+69 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-wasm32-wasi'
+69 silly reify ]
+70 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-x64-musl
+71 silly reify mark deleted [
+71 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-x64-musl'
+71 silly reify ]
+72 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-x64-gnu
+73 silly reify mark deleted [
+73 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-x64-gnu'
+73 silly reify ]
+74 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-s390x-gnu
+75 silly reify mark deleted [
+75 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-s390x-gnu'
+75 silly reify ]
+76 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-riscv64-musl
+77 silly reify mark deleted [
+77 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-riscv64-musl'
+77 silly reify ]
+78 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-riscv64-gnu
+79 silly reify mark deleted [
+79 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-riscv64-gnu'
+79 silly reify ]
+80 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-ppc64-gnu
+81 silly reify mark deleted [
+81 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-ppc64-gnu'
+81 silly reify ]
+82 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-arm64-musl
+83 silly reify mark deleted [
+83 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-arm64-musl'
+83 silly reify ]
+84 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-arm64-gnu
+85 silly reify mark deleted [
+85 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-arm64-gnu'
+85 silly reify ]
+86 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-arm-musleabihf
+87 silly reify mark deleted [
+87 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-arm-musleabihf'
+87 silly reify ]
+88 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-linux-arm-gnueabihf
+89 silly reify mark deleted [
+89 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-linux-arm-gnueabihf'
+89 silly reify ]
+90 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-freebsd-x64
+91 silly reify mark deleted [
+91 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-freebsd-x64'
+91 silly reify ]
+92 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-darwin-x64
+93 silly reify mark deleted [
+93 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-darwin-x64'
+93 silly reify ]
+94 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-darwin-arm64
+95 silly reify mark deleted [
+95 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-darwin-arm64'
+95 silly reify ]
+96 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-android-arm64
+97 silly reify mark deleted [
+97 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-android-arm64'
+97 silly reify ]
+98 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@unrs\resolver-binding-android-arm-eabi
+99 silly reify mark deleted [
+99 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@unrs\\resolver-binding-android-arm-eabi'
+99 silly reify ]
+100 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-win32-arm64-msvc
+101 silly reify mark deleted [
+101 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-win32-arm64-msvc'
+101 silly reify ]
+102 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-linux-x64-musl
+103 silly reify mark deleted [
+103 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-linux-x64-musl'
+103 silly reify ]
+104 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-linux-x64-gnu
+105 silly reify mark deleted [
+105 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-linux-x64-gnu'
+105 silly reify ]
+106 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-linux-arm64-musl
+107 silly reify mark deleted [
+107 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-linux-arm64-musl'
+107 silly reify ]
+108 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-linux-arm64-gnu
+109 silly reify mark deleted [
+109 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-linux-arm64-gnu'
+109 silly reify ]
+110 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-linux-arm-gnueabihf
+111 silly reify mark deleted [
+111 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-linux-arm-gnueabihf'
+111 silly reify ]
+112 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-freebsd-x64
+113 silly reify mark deleted [
+113 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-freebsd-x64'
+113 silly reify ]
+114 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-darwin-x64
+115 silly reify mark deleted [
+115 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-darwin-x64'
+115 silly reify ]
+116 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-darwin-arm64
+117 silly reify mark deleted [
+117 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-darwin-arm64'
+117 silly reify ]
+118 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@tailwindcss\oxide-android-arm64
+119 silly reify mark deleted [
+119 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@tailwindcss\\oxide-android-arm64'
+119 silly reify ]
+120 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@next\swc-win32-arm64-msvc
+121 silly reify mark deleted [
+121 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@next\\swc-win32-arm64-msvc'
+121 silly reify ]
+122 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@next\swc-linux-x64-musl
+123 silly reify mark deleted [
+123 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@next\\swc-linux-x64-musl'
+123 silly reify ]
+124 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@next\swc-linux-x64-gnu
+125 silly reify mark deleted [
+125 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@next\\swc-linux-x64-gnu'
+125 silly reify ]
+126 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@next\swc-linux-arm64-musl
+127 silly reify mark deleted [
+127 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@next\\swc-linux-arm64-musl'
+127 silly reify ]
+128 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@next\swc-linux-arm64-gnu
+129 silly reify mark deleted [
+129 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@next\\swc-linux-arm64-gnu'
+129 silly reify ]
+130 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@next\swc-darwin-x64
+131 silly reify mark deleted [
+131 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@next\\swc-darwin-x64'
+131 silly reify ]
+132 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@next\swc-darwin-arm64
+133 silly reify mark deleted [
+133 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@next\\swc-darwin-arm64'
+133 silly reify ]
+134 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-win32-ia32
+135 silly reify mark deleted [
+135 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-win32-ia32'
+135 silly reify ]
+136 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-win32-arm64
+137 silly reify mark deleted [
+137 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-win32-arm64'
+137 silly reify ]
+138 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-wasm32
+139 silly reify mark deleted [
+139 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-wasm32'
+139 silly reify ]
+140 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linuxmusl-x64
+141 silly reify mark deleted [
+141 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linuxmusl-x64'
+141 silly reify ]
+142 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linuxmusl-arm64
+143 silly reify mark deleted [
+143 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linuxmusl-arm64'
+143 silly reify ]
+144 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linux-x64
+145 silly reify mark deleted [
+145 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linux-x64'
+145 silly reify ]
+146 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linux-s390x
+147 silly reify mark deleted [
+147 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linux-s390x'
+147 silly reify ]
+148 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linux-riscv64
+149 silly reify mark deleted [
+149 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linux-riscv64'
+149 silly reify ]
+150 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linux-ppc64
+151 silly reify mark deleted [
+151 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linux-ppc64'
+151 silly reify ]
+152 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linux-arm64
+153 silly reify mark deleted [
+153 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linux-arm64'
+153 silly reify ]
+154 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-linux-arm
+155 silly reify mark deleted [
+155 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-linux-arm'
+155 silly reify ]
+156 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linuxmusl-x64
+157 silly reify mark deleted [
+157 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linuxmusl-x64'
+157 silly reify ]
+158 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linuxmusl-arm64
+159 silly reify mark deleted [
+159 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linuxmusl-arm64'
+159 silly reify ]
+160 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linux-x64
+161 silly reify mark deleted [
+161 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linux-x64'
+161 silly reify ]
+162 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linux-s390x
+163 silly reify mark deleted [
+163 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linux-s390x'
+163 silly reify ]
+164 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linux-riscv64
+165 silly reify mark deleted [
+165 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linux-riscv64'
+165 silly reify ]
+166 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linux-ppc64
+167 silly reify mark deleted [
+167 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linux-ppc64'
+167 silly reify ]
+168 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linux-arm64
+169 silly reify mark deleted [
+169 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linux-arm64'
+169 silly reify ]
+170 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-linux-arm
+171 silly reify mark deleted [
+171 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-linux-arm'
+171 silly reify ]
+172 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-darwin-x64
+173 silly reify mark deleted [
+173 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-darwin-x64'
+173 silly reify ]
+174 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-libvips-darwin-arm64
+175 silly reify mark deleted [
+175 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-libvips-darwin-arm64'
+175 silly reify ]
+176 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-darwin-x64
+177 silly reify mark deleted [
+177 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-darwin-x64'
+177 silly reify ]
+178 verbose reify failed optional dependency C:\Users\Dell\Desktop\Portfolio\node_modules\@img\sharp-darwin-arm64
+179 silly reify mark deleted [
+179 silly reify   'C:\\Users\\Dell\\Desktop\\Portfolio\\node_modules\\@img\\sharp-darwin-arm64'
+179 silly reify ]
+180 http cache motion-dom@https://registry.npmjs.org/motion-dom/-/motion-dom-12.38.0.tgz 0ms (cache hit)
+181 http cache motion-utils@https://registry.npmjs.org/motion-utils/-/motion-utils-12.36.0.tgz 0ms (cache hit)
+182 http cache framer-motion@https://registry.npmjs.org/framer-motion/-/framer-motion-12.38.0.tgz 0ms (cache hit)
+183 silly tarball no local data for motion-dom@https://registry.npmjs.org/motion-dom/-/motion-dom-12.38.0.tgz. Extracting by manifest.
+184 silly tarball no local data for motion-utils@https://registry.npmjs.org/motion-utils/-/motion-utils-12.36.0.tgz. Extracting by manifest.
+185 silly tarball no local data for framer-motion@https://registry.npmjs.org/framer-motion/-/framer-motion-12.38.0.tgz. Extracting by manifest.
+186 http fetch GET 200 https://registry.npmjs.org/motion-utils/-/motion-utils-12.36.0.tgz 167ms (cache miss)
+187 http fetch GET 200 https://registry.npmjs.org/motion-dom/-/motion-dom-12.38.0.tgz 862ms (cache miss)
+188 http fetch GET 200 https://registry.npmjs.org/framer-motion/-/framer-motion-12.38.0.tgz 915ms (cache miss)
+189 silly ADD node_modules/motion-utils
+190 silly ADD node_modules/motion-dom
+191 silly ADD node_modules/framer-motion
+192 silly ADD
+193 silly ADD
+194 silly ADD
+195 silly ADD
+196 silly ADD
+197 silly ADD
+198 silly ADD
+199 silly ADD
+200 silly ADD
+201 silly ADD
+202 silly ADD
+203 silly ADD
+204 silly ADD
+205 silly ADD
+206 silly ADD
+207 silly ADD
+208 silly ADD
+209 silly ADD
+210 silly ADD
+211 silly ADD
+212 silly ADD
+213 silly ADD
+214 silly ADD
+215 silly ADD
+216 silly ADD
+217 silly ADD
+218 silly ADD
+219 silly ADD
+220 silly ADD
+221 silly ADD
+222 silly ADD
+223 silly ADD
+224 silly ADD
+225 silly ADD
+226 silly ADD
+227 silly ADD
+228 silly ADD
+229 silly ADD
+230 silly ADD
+231 silly ADD
+232 silly ADD
+233 silly ADD
+234 silly ADD
+235 silly ADD
+236 silly ADD
+237 silly ADD
+238 silly ADD
+239 silly ADD
+240 silly ADD
+241 silly ADD
+242 silly ADD
+243 silly ADD
+244 silly ADD
+245 silly ADD
+246 silly ADD
+247 silly ADD
+248 silly ADD
+249 silly ADD
+250 silly ADD
+251 silly ADD
+252 silly ADD
+253 silly ADD
+254 silly ADD
+255 silly ADD
+256 silly ADD
+257 silly ADD
+258 silly ADD
+259 silly ADD
+260 silly ADD
+261 verbose cwd C:\Users\Dell\Desktop\Portfolio
+262 verbose os Windows_NT 10.0.26200
+263 verbose node v22.17.1
+264 verbose npm  v10.9.2
+265 verbose exit 0
+266 info ok
