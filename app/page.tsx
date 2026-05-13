@@ -1,7 +1,8 @@
 
 import { About } from "./components/about";
 import { Contact } from "./components/contact";
-import Footer from "./components/footer";
+import { Footer } from "./components/footer";
+
 import Header from "./components/header";
 import HeroSection from "./components/herosection";
 import { Projects } from "./components/project";
@@ -17,8 +18,8 @@ export default function Home() {
       <Projects/>
       <Skills/>
       <Contact/>
+      <Footer/>
       </main>
-      <Footer />
     </>
   );
 }

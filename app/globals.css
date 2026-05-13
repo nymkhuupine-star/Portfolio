@@ -93,6 +93,27 @@ body {
     --hazy-mint: oklch(86% 0.12 165);
   }
 
+  .hazy-blue {
+    --hazy-yellow: #1E6BFF;
+    --hazy-blue: #1E6BFF;
+    --hazy-pink: #1E6BFF;
+    --hazy-mint: #1E6BFF;
+  }
+
+  .hazy-green {
+    --hazy-yellow: #20C05C;
+    --hazy-blue: #20C05C;
+    --hazy-pink: #20C05C;
+    --hazy-mint: #20C05C;
+  }
+
+  .hazy-yellow {
+    --hazy-yellow: #FFC233;
+    --hazy-blue: #FFC233;
+    --hazy-pink: #FFC233;
+    --hazy-mint: #FFC233;
+  }
+
   .hazy-border::before,
   .hazy-border::after {
     content: "";

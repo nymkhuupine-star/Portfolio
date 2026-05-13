@@ -2,35 +2,49 @@
 
 import { motion, useReducedMotion } from "framer-motion"
 import { Code2, Database, Globe, Wrench } from "lucide-react"
-import type { CSSProperties } from "react"
 
 const skillCategories = [
   {
     icon: Code2,
     title: "Frontend",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"],
+    strokeClass: "stroke-blue-500/20 group-hover:stroke-blue-500/40",
+    glowColor: "rgba(59,130,246,0.25)",
+    glowBg: "bg-blue-500/10",
+    iconColor: "text-blue-500",
   },
   {
     icon: Database,
     title: "Backend",
     skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "GraphQL"],
+    strokeClass: "stroke-green-500/20 group-hover:stroke-green-500/40",
+    glowColor: "rgba(32,192,92,0.25)",
+    glowBg: "bg-green-500/10",
+    iconColor: "text-green-500",
   },
   {
     icon: Globe,
     title: "DevOps",
     skills: ["Docker", "AWS", "Vercel", "CI/CD", "Linux"],
+    strokeClass: "stroke-amber-500/20 group-hover:stroke-amber-500/40",
+    glowColor: "rgba(255,194,51,0.25)",
+    glowBg: "bg-amber-500/10",
+    iconColor: "text-amber-500",
   },
   {
     icon: Wrench,
     title: "Tools",
     skills: ["Git", "Figma", "VS Code", "Postman", "Jira"],
+    strokeClass: "stroke-purple-500/20 group-hover:stroke-purple-500/40",
+    glowColor: "rgba(168,85,247,0.25)",
+    glowBg: "bg-purple-500/10",
+    iconColor: "text-purple-500",
   },
 ]
 
-const puzzleOutlineColors = ["#1E6BFF", "#20C05C", "#FFC233", "#8A2BE2"]
-const PUZZLE_VIEWBOX = "-24 -24 368 368"
+const PUZZLE_VIEWBOX = "0 0 320 320"
 const NOISE_BG_IMAGE =
-  'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'240\' height=\'240\' viewBox=\'0 0 240 240\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'240\' height=\'240\' filter=\'url(%23n)\' opacity=\'.18\'/%3E%3C/svg%3E")'
+  'url("data:image/svg+xml,%3Csvg xmlns=\'w3.org\' width=\'240\' height=\'240\' viewBox=\'0 0 240 240\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'240\' height=\'240\' filter=\'url(%23n)\' opacity=\'.18\'/%3E%3C/svg%3E")'
 
 const puzzlePaths = [
   "M 30,54 C 30,40 40,30 54,30 L 134,30 C 134,0 186,0 186,30 L 266,30 C 280,30 290,40 290,54 L 290,134 C 260,134 260,186 290,186 L 290,266 C 290,280 280,290 266,290 L 186,290 C 186,260 134,260 134,290 L 54,290 C 40,290 30,280 30,266 L 30,186 C 60,186 60,134 30,134 Z",
@@ -45,110 +59,96 @@ export function Skills() {
   return (
     <section id="skills" className="relative py-28 px-6 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(56,189,248,0.10),transparent_60%),radial-gradient(900px_520px_at_50%_110%,rgba(168,85,247,0.10),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(56,189,248,0.04),transparent_60%),radial-gradient(900px_520px_at_50%_110%,rgba(168,85,247,0.04),transparent_55%)]" />
         <div
           className="absolute inset-0 opacity-[0.28] mix-blend-overlay"
           style={{ backgroundImage: NOISE_BG_IMAGE }}
         />
       </div>
-      <div className="max-w-6xl mx-auto">
-        <p className="text-xs font-semibold text-primary/80 mb-3 tracking-[0.35em] uppercase text-center">
-          Skills
+
+      <div className="max-w-6xl mx-auto mb-14 text-center">
+        <p className="text-xs font-semibold text-primary/80 mb-3 tracking-[0.35em] uppercase">
+          Миний ур чадвар
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-14 text-center">
-          Technologies & Tools
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          Ашигладаг технологиуд
         </h2>
       </div>
 
-      <div className="puzzle-scroller">
-        <div className="puzzle-row" role="list" aria-label="Skill categories">
-          {skillCategories.map((category, index) => {
-            const puzzlePath = puzzlePaths[index] ?? puzzlePaths[0]
-            const puzzleStroke = puzzleOutlineColors[index] ?? puzzleOutlineColors[0]
-            const clipId = `skills-puzzle-clip-${index}`
-            const fillId = `skills-puzzle-fill-${index}`
-            const stack = 10 + (skillCategories.length - index)
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-[1020px] mx-auto justify-items-center gap-y-6 lg:gap-y-0">
+        {skillCategories.map((category, index) => {
+          const puzzlePath = puzzlePaths[index] ?? puzzlePaths
+          const stack = 40 - index 
 
-            const pieceStyle = {
-              "--puzzle-stroke": puzzleStroke,
-              "--puzzle-clip": `path("${puzzlePath}")`,
-            } as CSSProperties
+          // Пуззл бүрийн хэлбэрт тааруулж зайг динамикаар бодов
+          let spacingClass = ""
+          if (index === 1) {
+            spacingClass = "lg:-ml-[12px]" // Эхний 2 пуззл хэт ойртохоос сэргийлж зайг нь холдуулав
+          } else if (index > 1) {
+            spacingClass = "lg:-ml-[25px]" // Бусад пуззлууд дээрх хуучин төгс зай
+          }
 
-            return (
-              <motion.div
-                key={category.title}
-                className={`puzzle-piece puzzle-piece-${index + 1}`}
-                style={{ ...pieceStyle, zIndex: stack } as CSSProperties}
-                role="listitem"
-                tabIndex={0}
-                whileHover={reduceMotion ? undefined : { y: -6 }}
-                whileFocus={reduceMotion ? undefined : { y: -6 }}
-                transition={
-                  reduceMotion
-                    ? undefined
-                    : { type: "spring", stiffness: 280, damping: 22, mass: 0.7 }
-                }
+          return (
+            <motion.div
+              key={category.title}
+              className={`group relative w-[280px] h-[280px] flex items-center justify-center transition-all duration-300 hover:-translate-y-2 select-none ${spacingClass}`}
+              style={{ zIndex: stack }}
+              whileHover={reduceMotion ? {} : { scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 350, damping: 25 }}
+            >
+              {/* Зөөлөн неон туяа */}
+              <div 
+                className={`absolute right-6 top-6 h-20 w-20 rounded-full blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-50 pointer-events-none z-0 ${category.glowBg}`} 
+              />
+
+              {/* Пуззл SVG */}
+              <svg
+                viewBox={PUZZLE_VIEWBOX}
+                className="absolute inset-0 w-full h-full pointer-events-none overflow-visible z-10"
               >
-                <svg
-                  className="puzzle-shape"
-                  viewBox={PUZZLE_VIEWBOX}
-                  role="presentation"
-                  aria-hidden="true"
-                  focusable="false"
-                  style={{ color: "var(--puzzle-stroke)" }}
-                >
-                  <defs>
-                    <clipPath id={clipId}>
-                      <path d={puzzlePath} />
-                    </clipPath>
+                <defs>
+                  <filter id={`glow-filter-${index}`} x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow 
+                      dx="0" 
+                      dy="4" 
+                      stdDeviation="10" 
+                      floodColor={category.glowColor} 
+                      floodOpacity="0" 
+                      className="transition-all duration-300 group-hover:[flood-opacity:0.75]" 
+                    />
+                  </filter>
+                </defs>
+                
+                <path
+                  d={puzzlePath}
+                  filter={`url(#glow-filter-${index})`}
+                  className={`fill-card/75 stroke-[1.2] transition-all duration-300 ${category.strokeClass}`}
+                />
+              </svg>
 
-                    <linearGradient id={fillId} x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="rgba(255,255,255,0.08)" />
-                      <stop offset="40%" stopColor="rgba(255,255,255,0.04)" />
-                      <stop offset="100%" stopColor="rgba(0,0,0,0.18)" />
-                    </linearGradient>
-                  </defs>
-
-                  <path className="puzzle-fill" d={puzzlePath} fill={`url(#${fillId})`} />
-                  <path
-                    className="puzzle-stroke"
-                    d={puzzlePath}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="6"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    clipPath={`url(#${clipId})`}
-                  />
-                  <path
-                    className="puzzle-glow"
-                    d={puzzlePath}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="12"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  />
-                </svg>
-
-                <div className="puzzle-inner">
-                  <div className="puzzle-icon-wrap" aria-hidden="true">
-                    <category.icon className="w-6 h-6" />
+              {/* Текст болон Икон агуулга */}
+              <div className="relative z-20 w-full h-full pt-14 pb-10 px-12 flex flex-col justify-between pointer-events-auto">
+                <div className="pl-2">
+                  <div className="w-9 h-9 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-105">
+                    <category.icon className={`w-4 h-4 ${category.iconColor}`} />
                   </div>
-                  <h3 className="puzzle-title">{category.title}</h3>
-                  <ul className="puzzle-skills">
-                    {category.skills.map((skill) => (
-                      <li key={skill} className="puzzle-skill-item">
-                        <span className="puzzle-dot" />
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 className="text-base font-bold text-foreground tracking-wide">
+                    {category.title}
+                  </h3>
                 </div>
-              </motion.div>
-            )
-          })}
-        </div>
+
+                <ul className="space-y-1 pl-2 mb-2">
+                  {category.skills.map((skill) => (
+                    <li key={skill} className="text-xs text-muted-foreground flex items-center gap-2 font-medium">
+                      <span className={`w-1.2 h-1.2 rounded-full ${category.iconColor} opacity-50`} />
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          )
+        })}
       </div>
     </section>
   )
