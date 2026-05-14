@@ -38,9 +38,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} h-full antialiased`}
-      suppressHydrationWarning
+      suppressHydrationWarning // 1. Энд хэвээр үлдэнэ
     >
-      <body className="min-h-full text-foreground font-sans">
+      {/* 2. ШИНЭЧЛЭГДСЭН: Броузерын өргөтгөлүүдийн алдааг дарахын тулд body дээр нэмэв */}
+      <body className="min-h-full text-foreground font-sans" suppressHydrationWarning>
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>

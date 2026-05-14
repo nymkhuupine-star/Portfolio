@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { ExternalLink, GitBranch } from "lucide-react"
+import { GitBranch } from "lucide-react"
+import { ProjectDetailsDialogTrigger } from "./ui/project-details-dialog"
 
 type ProjectEntry = {
   date: string
@@ -10,19 +11,41 @@ type ProjectEntry = {
   highlights: string[]
   github?: string
   live?: string
+  details: {
+    screenshot?: string | null
+    screenshotAlt?: string
+    whatItDoes: string
+    problemSolved: string
+    features: string[]
+    tech: string[]
+  }
 }
 
 const projects: ProjectEntry[] = [
   {
     date: "2026-04-20",
     version: "2.1",
-    title: "E-Commerce Platform",
+    title: "Employee Benefits Management System",
     description:
-      "Next.js, Stripe, Tailwind CSS ашиглан бүтээсэн бүрэн ажиллагаатай онлайн дэлгүүр. Real-time inventory, хэрэглэгчийн бүртгэл, төлбөрийн систем.",
-    tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
-    highlights: ["Stripe төлбөрийн урсгал + webhook", "Admin dashboard (inventory, orders)", "Authentication + role-based access"],
+      "HR болон ажилтнуудад зориулсан benefit eligibility, request, approval процессыг автоматжуулсан management system.",
+    tags: ["Next.js", "TypeScript", "Cloudflare", "GraphQL"],
+    highlights: ["Ажилтны benefit eligibility-г автоматаар шалгах систем", "HR approval болон request удирдлагын dashboard", "Attendance болон OKR-тэй холбогдсон rule system"],
     github: "#",
-    live: "#",
+    live: "https://team-8-frontend.team8pinequest.workers.dev/",
+    details: {
+      screenshot: "/hr.png",
+      whatItDoes:
+        "Employee Benefits Management System нь ажилтнуудын benefit eligibility, request, approval болон contract management процессыг автоматжуулдаг веб систем юм. Систем нь attendance, OKR, role, tenure зэрэг мэдээлэл дээр үндэслэн ямар benefit авах боломжтойг real-time байдлаар тодорхойлдог.",
+      problemSolved:
+        "Байгууллагууд employee benefit-үүдээ ихэвчлэн гар аргаар шалгаж, approval хийдэг тул цаг их зарцуулж, алдаа гарах эрсдэлтэй байдаг. Энэ систем нь eligibility шалгалт, request workflow болон HR process-ийг автоматжуулснаар ажлын ачааллыг бууруулж, илүү хурдан бөгөөд ил тод удирдах боломжийг бүрдүүлсэн.",
+      features: [
+        "Ажилтны benefit eligibility-г автоматаар шалгах систем",
+        "HR approval болон request удирдлагын dashboard",
+        "Гэрээт benefit удирдлагын workflow",
+        "Attendance болон OKR-тэй холбогдсон rule system",
+      ],
+      tech: ["Next.js", "TypeScript", "Stripe", "Prisma", "Tailwind CSS"],
+    },
   },
   {
     date: "2026-03-02",
@@ -34,6 +57,20 @@ const projects: ProjectEntry[] = [
     highlights: ["Realtime updates (Socket.io)", "Drag & drop board (Kanban)", "Activity feed + notifications"],
     github: "#",
     live: "#",
+    details: {
+      screenshot: null,
+      whatItDoes:
+        "Багийн даалгавар, явц, хариуцагч, хугацааг нэг дор төвлөрүүлж Канбан самбар дээр удирдах төслийн менежментийн веб апп.",
+      problemSolved:
+        "Багийн гишүүдийн хоорондын мэдээллийн алдагдал, олон сувгийн чат/спрэдшитээс үүддэг төөрөгдөл, статус хоцролтыг real-time синктэй болгож шийдсэн.",
+      features: [
+        "Kanban самбар (drag & drop)",
+        "Socket.io дээр суурилсан realtime update",
+        "Activity feed + notifications",
+        "Төсөл/даалгаврын төлөв, хугацааны хяналт",
+      ],
+      tech: ["React", "Node.js", "MongoDB", "Socket.io"],
+    },
   },
   {
     date: "2026-01-18",
@@ -45,6 +82,20 @@ const projects: ProjectEntry[] = [
     highlights: ["Streaming responses + abort", "Conversation context + persistence", "Multi-language UX + prompt presets"],
     github: "#",
     live: "#",
+    details: {
+      screenshot: null,
+      whatItDoes:
+        "OpenAI API дээр суурилсан чат аппликейшн. Хэрэглэгчийн асуултад streaming хариу өгч, өмнөх ярианы контекстийг хадгалан илүү ухаалаг харилцан үйлчлэлийг хангана.",
+      problemSolved:
+        "Удаан хүлээлттэй нэг дор буудаг хариуг streaming болгох, контекст хадгалалтгүйгээс үүддэг чанарын асуудлыг бууруулж — олон хэлний UX-тэй болгосон.",
+      features: [
+        "Streaming responses + Abort/Cancel",
+        "Conversation context + persistence",
+        "Multi-language UX + prompt presets",
+        "Хялбар UI/UX (clean, distraction-free)",
+      ],
+      tech: ["Next.js", "OpenAI API", "Vercel AI SDK", "Tailwind CSS"],
+    },
   },
 ]
 
@@ -83,7 +134,7 @@ export function Projects() {
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
                     <div className="flex items-center gap-3">
-                      {project.github ? (
+                      {project.github && project.github !== "#" ? (
                         <Link
                           href={project.github}
                           className="text-muted-foreground transition-colors hover:text-primary"
@@ -92,15 +143,7 @@ export function Projects() {
                           <GitBranch className="h-5 w-5" />
                         </Link>
                       ) : null}
-                      {project.live ? (
-                        <Link
-                          href={project.live}
-                          className="text-muted-foreground transition-colors hover:text-primary"
-                          aria-label="Live Demo"
-                        >
-                          <ExternalLink className="h-5 w-5" />
-                        </Link>
-                      ) : null}
+                      <ProjectDetailsDialogTrigger project={project} />
                     </div>
                   </div>
 
@@ -131,4 +174,3 @@ export function Projects() {
     </section>
   )
 }
-

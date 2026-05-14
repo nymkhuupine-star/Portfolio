@@ -1,0 +1,166 @@
+"use client"
+
+import Link from "next/link"
+import Image from "next/image"
+import { ExternalLink } from "lucide-react"
+import { useMemo, useState, type ReactNode } from "react"
+import { Modal } from "./modal"
+
+type ProjectDetails = {
+  screenshot?: string | null
+  screenshotAlt?: string
+  whatItDoes: string
+  problemSolved: string
+  features: string[]
+  tech: string[]
+}
+
+type ProjectEntry = {
+  title: string
+  description: string
+  tags: string[]
+  highlights: string[]
+  github?: string
+  live?: string
+  details: ProjectDetails
+}
+
+function cx(...values: Array<string | undefined | null | false>) {
+  return values.filter(Boolean).join(" ")
+}
+
+function PrimaryLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+      target="_blank"
+      rel="noreferrer"
+    >
+      {children}
+    </Link>
+  )
+}
+
+function ProjectScreenshot({
+  screenshot,
+  alt,
+  title,
+}: {
+  screenshot?: string | null
+  alt: string
+  title: string
+}) {
+  if (screenshot) {
+    return (
+      <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border/60 bg-secondary">
+        <Image src={screenshot} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1024px" className="object-contain" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border/60 bg-secondary">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.45] dark:opacity-[0.25] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:28px_28px] text-foreground/15 dark:text-foreground/35"
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-background/70 via-transparent to-transparent" />
+
+      <div className="relative flex h-full w-full flex-col justify-end p-6">
+        <p className="text-xs font-semibold tracking-widest text-foreground/50 uppercase">Preview</p>
+        <p className="mt-2 text-lg font-semibold text-foreground">{title}</p>
+        <p className="mt-1 text-sm text-foreground/60">Screenshot зураг нэмэхэд автоматаар энд харагдана.</p>
+      </div>
+    </div>
+  )
+}
+
+export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry }) {
+  const [open, setOpen] = useState(false)
+
+  const hasLive = Boolean(project.live && project.live !== "#")
+
+  const screenshotAlt = useMemo(() => project.details.screenshotAlt ?? `${project.title} screenshot`, [project.details.screenshotAlt, project.title])
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 rounded-md"
+        aria-label="Дэлгэрэнгүй"
+        title="Дэлгэрэнгүй"
+      >
+        <ExternalLink className="h-5 w-5" />
+      </button>
+
+      <Modal
+        open={open}
+        onOpenChange={setOpen}
+        title={project.title}
+        description="Төслийн дэлгэрэнгүй"
+        size="lg"
+        headerActions={
+          hasLive ? (
+            <PrimaryLink href={project.live!}>
+              <span className="inline-flex items-center gap-2">
+                <ExternalLink className="h-4 w-4" />
+                Live Demo
+              </span>
+            </PrimaryLink>
+          ) : null
+        }
+      >
+        <div className="space-y-8">
+          <ProjectScreenshot screenshot={project.details.screenshot} alt={screenshotAlt} title={project.title} />
+
+          <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+            <div className="space-y-8">
+              <section>
+                <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Project юу хийдэг</h4>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.whatItDoes}</p>
+              </section>
+
+              <section>
+                <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Ямар асуудал шийдсэн</h4>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.problemSolved}</p>
+              </section>
+
+              <section>
+                <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Гол features</h4>
+                <ul className="mt-3 space-y-2 text-sm text-foreground/80">
+                  {project.details.features.map((feature) => (
+                    <li key={feature} className="flex gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+
+            <aside className="space-y-6">
+              <div className="rounded-2xl border border-border/60 bg-secondary/30 p-5">
+                <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">Ашигласан tech</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.details.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className={cx(
+                        "rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-semibold",
+                        "text-foreground/80",
+                      )}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </Modal>
+    </>
+  )
+}

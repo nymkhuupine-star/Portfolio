@@ -2,90 +2,93 @@
 
 import { useEffect, useState } from "react";
 
-// 5-pointed star: center(100,100), outer r=50, inner r=20
-const STAR =
-  "100,50 111.76,83.82 147.55,84.55 119.02,106.18 129.39,140.45 100,120 70.61,140.45 80.98,106.18 52.45,84.55 88.24,83.82";
-
-// approximate perimeter
-const PERIM = 358;
-
 export default function LoadingScreen() {
   const [fading, setFading] = useState(false);
-  const [gone,   setGone]   = useState(false);
+  const [gone, setGone] = useState(false);
 
   useEffect(() => {
-    const MIN = 800;
+    const MIN = 1000; // Ачаалагч харагдах доод хугацаа (1 секунд)
     const start = Date.now();
+    
     const done = () => {
       const wait = Math.max(0, MIN - (Date.now() - start));
       setTimeout(() => setFading(true), wait);
-      setTimeout(() => setGone(true), wait + 700);
+      setTimeout(() => setGone(true), wait + 400); // 0.4 секундын дараа бүрэн устгана
     };
-    if (document.readyState === "complete") done();
-    else window.addEventListener("load", done, { once: true });
+
+    if (document.readyState === "complete") {
+      done();
+    } else {
+      window.addEventListener("load", done, { once: true });
+    }
   }, []);
 
   if (gone) return null;
 
   return (
     <div
+      className="fixed inset-0 z-[9999] bg-background px-6 py-12 flex flex-col justify-between transition-opacity duration-500 ease-in-out select-none pointer-events-none"
       style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 9999,
-        background: "var(--background)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
         opacity: fading ? 0 : 1,
-        transition: "opacity 0.7s ease",
         pointerEvents: fading ? "none" : "auto",
       }}
     >
-      <svg
-        viewBox="0 0 200 200"
-        width="320"
-        height="320"
-        style={{ overflow: "visible" }}
-      >
-        <defs>
-          <filter id="glow-cyn" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="4" result="b" />
-            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
+      <div className="mx-auto w-full max-w-6xl w-full flex flex-col h-full justify-between">
+        
+        {/* 1. HEADER SKELETON */}
+        <div className="w-full flex items-center justify-between py-4 border-b border-foreground/5 animate-pulse">
+          <div className="h-6 w-36 rounded-lg bg-foreground/10" /> {/* Лого */}
+          <div className="hidden md:flex items-center gap-x-8">
+            <div className="h-4 w-16 rounded-md bg-foreground/5" />
+            <div className="h-4 w-16 rounded-md bg-foreground/5" />
+            <div className="h-4 w-16 rounded-md bg-foreground/5" />
+            <div className="h-4 w-16 rounded-md bg-foreground/5" />
+          </div>
+          <div className="h-9 w-24 rounded-xl bg-foreground/10" /> {/* Товч */}
+        </div>
 
-          <style>{`
-            @keyframes race {
-              from { stroke-dashoffset: 0; }
-              to   { stroke-dashoffset: -${PERIM}; }
-            }
-          `}</style>
-        </defs>
+        {/* 2. HERO & MAIN CONTENT SKELETON */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-auto py-12 w-full animate-pulse">
+          {/* Зүүн тал: Текстүүд */}
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <div className="h-4 w-28 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20" /> {/* Баж */}
+              <div className="h-12 w-3/4 rounded-xl bg-foreground/10 sm:h-16" /> {/* Том гарчиг */}
+              <div className="h-12 w-1/2 rounded-xl bg-foreground/10 sm:h-16" />
+            </div>
+            <div className="space-y-2">
+              <div className="h-4 w-full rounded-md bg-foreground/5" /> {/* Танилцуулга текст */}
+              <div className="h-4 w-5/6 rounded-md bg-foreground/5" />
+              <div className="h-4 w-4/6 rounded-md bg-foreground/5" />
+            </div>
+            <div className="flex gap-x-4 pt-2">
+              <div className="h-11 w-32 rounded-xl bg-foreground/10" /> {/* Товч 1 */}
+              <div className="h-11 w-32 rounded-xl bg-foreground/5" />  {/* Товч 2 */}
+            </div>
+          </div>
 
-        {/* static cyan outline */}
-        <polygon
-          points={STAR}
-          fill="none"
-          stroke="#00d4ff"
-          strokeWidth="2"
-          strokeLinejoin="round"
-          strokeOpacity="0.35"
-        />
+          {/* Баруун тал: Төсөл эсвэл Мок-ап карт */}
+          <div className="hidden lg:block w-full h-[380px] rounded-3xl border border-foreground/5 bg-foreground/[0.02] p-8 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="h-4 w-20 rounded-md bg-foreground/10" />
+              <div className="h-7 w-48 rounded-lg bg-foreground/10" />
+              <div className="h-4 w-full rounded-md bg-foreground/5" />
+            </div>
+            <div className="h-44 w-full rounded-2xl bg-foreground/5" /> {/* Доторх зурагны хэсэг */}
+          </div>
+        </div>
 
-        {/* racing cyan segment */}
-        <polygon
-          points={STAR}
-          fill="none"
-          stroke="#00d4ff"
-          strokeWidth="3"
-          strokeLinejoin="round"
-          strokeDasharray={`70 ${PERIM - 70}`}
-          strokeDashoffset="0"
-          filter="url(#glow-cyn)"
-          style={{ animation: "race 2s linear infinite" }}
-        />
+        {/* 3. FOOTER SKELETON */}
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between py-6 border-t border-foreground/5 gap-y-4 animate-pulse">
+          <div className="h-4 w-48 rounded-md bg-foreground/5" />
+          <div className="flex gap-x-6">
+            <div className="h-4 w-12 rounded-md bg-foreground/5" />
+            <div className="h-4 w-12 rounded-md bg-foreground/5" />
+            <div className="h-4 w-12 rounded-md bg-foreground/5" />
+          </div>
+        </div>
 
-      </svg>
+      </div>
     </div>
   );
 }

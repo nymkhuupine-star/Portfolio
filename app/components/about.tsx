@@ -3,8 +3,8 @@ import { Code2, Lightbulb, Users } from "lucide-react"
 const highlights = [
   {
     icon: Code2,
-    title: "Цэвэр код",
-    description: "Засвар хийхэд хялбар, масштаблагдах код бичдэг",
+    title: "Веб хөгжүүлэлт",
+    description: "Хэрэгцээнд тохирсон, функциональ, цэвэр кодтой веб сайт болон веб апп хөгжүүлнэ",
     // Карт бүрийн гэрэлтэх өнгөний Tailwind классуудыг массивт нэмэв
     glowClass: "border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]",
     glowBg: "bg-blue-500/10",
@@ -12,16 +12,16 @@ const highlights = [
   },
   {
     icon: Lightbulb,
-    title: "Шийдэл хайгч",
-    description: "Бодит асуудлыг технологиор шийддэг",
+    title: "Responsive дизайн",
+    description: "Бүх төхөөрөмж дээр зөв харагдах, хэрэглэгчийн туршлагад төвлөрсөн responsive дизайн хийнэ",
     glowClass: "border-green-500/20 shadow-[0_0_20px_rgba(32,192,92,0.05)] hover:border-green-500/40 hover:shadow-[0_0_30px_rgba(32,192,92,0.15)]",
     glowBg: "bg-green-500/10",
     iconColor: "text-green-500"
   },
   {
     icon: Users,
-    title: "Багийн тоглогч",
-    description: "Харилцаа сайтай, хамтран ажиллах дуртай",
+    title: "Хамтран ажиллах",
+    description: "Таны санааг бодит болгоход нээлттэй, хариуцлагатай хамтарч ажиллахад бэлэн байна",
     glowClass: "border-amber-500/20 shadow-[0_0_20px_rgba(255,194,51,0.05)] hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(255,194,51,0.15)]",
     glowBg: "bg-amber-500/10",
     iconColor: "text-amber-500"
@@ -39,30 +39,26 @@ export function About() {
               Миний тухай
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-              Технологи болон бүтээлч байдлыг нэгтгэдэг
+              Орчин үеийн дизайн болон хурдан ажиллагаатай веб сайт бүтээдэг
             </h2>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
               <p>
-                Би 5+ жилийн туршлагатай full-stack developer. Хэрэглэгчдэд 
-                хялбар, хурдан, найдвартай вэб шийдлүүд бий болгоход чиглэсэн.
+               Би Next.js, React, Tailwind CSS ашиглан хурдан, ойлгомжтой, хэрэглэгчдэд ээлтэй вэб сайт болон dashboard хөгжүүлдэг full-stack developer.
               </p>
               <p>
-                Өдөр тутам шинэ технологи сурч, өөрийгөө хөгжүүлж байдаг. 
-                Нээлттэй эхийн төслүүдэд оролцох, залуу хөгжүүлэгчдэд туслах дуртай.
-              </p>
+               Business website, portfolio, landing page, admin dashboard зэрэг веб шийдлүүдийг цэвэрхэн дизайн болон responsive бүтэцтэйгээр хөгжүүлдэг. </p>
               <p>
-                Миний зорилго бол технологийг ашиглан хүмүүсийн амьдралыг 
-                илүү хялбар болгох юм.
+                Миний зорилго бол зөвхөн гоё харагдах биш, ашиглахад амар, найдвартай, бодит хэрэгцээ шийддэг бүтээгдэхүүн бүтээх юм.
               </p>
             </div>
           </div>
           
           {/* БАРУУН ТАЛ: ГЭРЭЛТЭХ ХҮРЭЭТЭЙ 3 КАРТ */}
-          <div className="space-y-6">
+          <div className="space-y-7.5 pt-12">
             {highlights.map((item, index) => (
               <div 
                 key={index}
-                className={`relative overflow-hidden flex gap-5 p-6 rounded-[28px] bg-card/60 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${item.glowClass}`}
+                className={`relative overflow-hidden flex gap-5 p-5.5  rounded-[28px] bg-card/60 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${item.glowClass}`}
               >
                 {/* Булангийн зөөлөн неон туяа (Glow Effect) */}
                 <div className={`absolute -right-8 -top-8 h-20 w-20 rounded-full blur-2xl opacity-70 ${item.glowBg}`} />
