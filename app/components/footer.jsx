@@ -14,9 +14,9 @@ export function Footer() {
             href="https://nyamkhuu.dev" 
             className="text-foreground/60 transition-colors hover:text-foreground underline underline-offset-4 decoration-foreground/10 hover:decoration-foreground"
           >
-            nyamkhuu.dev
+           
           </a>
-          <span>. Бүх эрх хуулиар хамгаалагдсан.</span>
+          <span>Бүх эрх хуулиар хамгаалагдсан.</span>
         </div>
 
         {/* Баруун тал: Сошиал холбоосууд */}
@@ -31,12 +31,12 @@ export function Footer() {
           </a>
           <span className="text-foreground/10 select-none">•</span>
           <a 
-            href="https://linkedin.com" 
+            href="https://www.instagram.com/bydeveloper__/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="transition-colors hover:text-foreground"
           >
-            LinkedIn
+            Instagram
           </a>
           <span className="text-foreground/10 select-none">•</span>
           <a 

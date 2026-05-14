@@ -7,7 +7,14 @@ const skillCategories = [
   {
     icon: Code2,
     title: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"],
+    skills: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      
+    ],
     strokeClass: "stroke-blue-500/20 group-hover:stroke-blue-500/40",
     glowColor: "rgba(59,130,246,0.25)",
     glowBg: "bg-blue-500/10",
@@ -16,7 +23,14 @@ const skillCategories = [
   {
     icon: Database,
     title: "Backend",
-    skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "GraphQL"],
+    skills: [
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Supabase",
+       "Prisma",
+      
+    ],
     strokeClass: "stroke-green-500/20 group-hover:stroke-green-500/40",
     glowColor: "rgba(32,192,92,0.25)",
     glowBg: "bg-green-500/10",
@@ -24,8 +38,14 @@ const skillCategories = [
   },
   {
     icon: Globe,
-    title: "DevOps",
-    skills: ["Docker", "AWS", "Vercel", "CI/CD", "Linux"],
+    title: "AI & Cloud",
+    skills: [
+      "Gemini AI",
+      "Pinecone",
+      "Cloudflare Workers",
+      "Cloudflare D1",
+      "Vercel",
+    ],
     strokeClass: "stroke-amber-500/20 group-hover:stroke-amber-500/40",
     glowColor: "rgba(255,194,51,0.25)",
     glowBg: "bg-amber-500/10",
@@ -34,7 +54,13 @@ const skillCategories = [
   {
     icon: Wrench,
     title: "Tools",
-    skills: ["Git", "Figma", "VS Code", "Postman", "Jira"],
+    skills: [
+      "Git",
+      "GitHub",
+      "Figma",
+      "Postman",
+      "Clerk",
+    ],
     strokeClass: "stroke-purple-500/20 group-hover:stroke-purple-500/40",
     glowColor: "rgba(168,85,247,0.25)",
     glowBg: "bg-purple-500/10",
@@ -67,7 +93,7 @@ export function Skills() {
       </div>
 
       <div className="max-w-6xl mx-auto mb-14 text-center">
-        <p className="text-xs font-semibold text-primary/80 mb-3 tracking-[0.35em] uppercase">
+        <p className="text-sm font-semibold text-primary/90 mb-3 tracking-[0.25em] uppercase">
           Миний ур чадвар
         </p>
         <h2 className="text-4xl md:text-5xl font-bold text-foreground">
@@ -75,25 +101,19 @@ export function Skills() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-[1020px] mx-auto justify-items-center gap-y-6 lg:gap-y-0">
+      <div className="mx-auto flex flex-col items-center gap-5 sm:grid sm:max-w-[700px] sm:grid-cols-2 sm:justify-items-center sm:gap-y-5 lg:flex lg:max-w-[1100px] lg:flex-row lg:justify-center lg:gap-0">
         {skillCategories.map((category, index) => {
           const puzzlePath = puzzlePaths[index] ?? puzzlePaths
           const stack = 40 - index 
 
-          // Пуззл бүрийн хэлбэрт тааруулж зайг динамикаар бодов
-          let spacingClass = ""
-          if (index === 1) {
-            spacingClass = "lg:-ml-[12px]" // Эхний 2 пуззл хэт ойртохоос сэргийлж зайг нь холдуулав
-          } else if (index > 1) {
-            spacingClass = "lg:-ml-[25px]" // Бусад пуззлууд дээрх хуучин төгс зай
-          }
+          const spacingClass = index === 0 ? "" : "lg:-ml-[52px]"
 
           return (
             <motion.div
               key={category.title}
-              className={`group relative w-[280px] h-[280px] flex items-center justify-center transition-all duration-300 hover:-translate-y-2 select-none ${spacingClass}`}
+              className={`group relative w-[300px] h-[300px] flex items-center justify-center select-none ${spacingClass}`}
               style={{ zIndex: stack }}
-              whileHover={reduceMotion ? {} : { scale: 1.01 }}
+              whileHover={reduceMotion ? {} : { scale: 1.01, y: -8, zIndex: 90 }}
               transition={{ type: "spring", stiffness: 350, damping: 25 }}
             >
               {/* Зөөлөн неон туяа */}
@@ -127,20 +147,20 @@ export function Skills() {
               </svg>
 
               {/* Текст болон Икон агуулга */}
-              <div className="relative z-20 w-full h-full pt-14 pb-10 px-12 flex flex-col justify-between pointer-events-auto">
+              <div className="relative z-20 w-full h-full pt-12 pb-8 px-10 flex flex-col gap-4 pointer-events-auto">
                 <div className="pl-2">
-                  <div className="w-9 h-9 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-105">
+                  <div className="w-9 h-9 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-105">
                     <category.icon className={`w-4 h-4 ${category.iconColor}`} />
                   </div>
-                  <h3 className="text-base font-bold text-foreground tracking-wide">
+                  <h3 className="text-lg font-bold text-foreground tracking-wide">
                     {category.title}
                   </h3>
                 </div>
 
-                <ul className="space-y-1 pl-2 mb-2">
+                <ul className="space-y-0.5 pl-2">
                   {category.skills.map((skill) => (
-                    <li key={skill} className="text-xs text-muted-foreground flex items-center gap-2 font-medium">
-                      <span className={`w-1.2 h-1.2 rounded-full ${category.iconColor} opacity-50`} />
+                    <li key={skill} className="text-sm text-foreground/75 flex items-center gap-2 font-medium">
+                      <span className={`h-1.5 w-1.5 rounded-full ${category.iconColor} opacity-60`} />
                       {skill}
                     </li>
                   ))}

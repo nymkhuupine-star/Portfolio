@@ -9,6 +9,7 @@ import { Modal } from "./modal"
 type ProjectDetails = {
   screenshot?: string | null
   screenshotAlt?: string
+  demoVideo?: string | null
   whatItDoes: string
   problemSolved: string
   features: string[]
@@ -76,12 +77,65 @@ function ProjectScreenshot({
   )
 }
 
+function getDemoEmbedUrl(input?: string | null) {
+  const value = input?.trim()
+  if (!value) return null
+
+  if (value.startsWith("https://player.cloudinary.com/")) {
+    try {
+      const url = new URL(value)
+      const hostname = url.hostname.replace(/^www\./, "")
+      if (hostname === "player.cloudinary.com" && url.pathname.startsWith("/embed")) {
+        return value
+      }
+    } catch {
+      return null
+    }
+  }
+
+  if (/^[\w-]{11}$/.test(value)) {
+    return `https://www.youtube.com/embed/${value}?rel=0&modestbranding=1`
+  }
+
+  try {
+    const url = new URL(value)
+    const hostname = url.hostname.replace(/^www\./, "")
+
+    if (hostname === "youtu.be") {
+      const id = url.pathname.split("/").filter(Boolean)[0]
+      return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1` : null
+    }
+
+    if (hostname === "youtube.com" || hostname.endsWith(".youtube.com")) {
+      if (url.pathname.startsWith("/shorts/")) {
+        const id = url.pathname.split("/").filter(Boolean)[1]
+        return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1` : null
+      }
+
+      if (url.pathname === "/watch") {
+        const id = url.searchParams.get("v")
+        return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1` : null
+      }
+
+      if (url.pathname.startsWith("/embed/")) {
+        const id = url.pathname.split("/").filter(Boolean)[1]
+        return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1` : null
+      }
+    }
+  } catch {
+    return null
+  }
+
+  return null
+}
+
 export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry }) {
   const [open, setOpen] = useState(false)
 
   const hasLive = Boolean(project.live && project.live !== "#")
 
   const screenshotAlt = useMemo(() => project.details.screenshotAlt ?? `${project.title} screenshot`, [project.details.screenshotAlt, project.title])
+  const demoVideoSrc = useMemo(() => getDemoEmbedUrl(project.details.demoVideo), [project.details.demoVideo])
 
   return (
     <>
@@ -115,7 +169,7 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
         <div className="space-y-8">
           <ProjectScreenshot screenshot={project.details.screenshot} alt={screenshotAlt} title={project.title} />
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+          <div className={cx("grid gap-8 items-start", demoVideoSrc ? "lg:grid-cols-[1fr_320px]" : false)}>
             <div className="space-y-8">
               <section>
                 <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Project юу хийдэг</h4>
@@ -138,9 +192,7 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
                   ))}
                 </ul>
               </section>
-            </div>
 
-            <aside className="space-y-6">
               <div className="rounded-2xl border border-border/60 bg-secondary/30 p-5">
                 <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">Ашигласан tech</p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -157,7 +209,30 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
                   ))}
                 </div>
               </div>
-            </aside>
+            </div>
+
+            {demoVideoSrc ? (
+              <aside className="space-y-6">
+                <div className="rounded-2xl border border-border/60 bg-secondary/30 p-5">
+                  <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">Туршилтын видео</p>
+                  <div className="mt-4 overflow-hidden rounded-2xl border border-border/60 bg-background">
+                    <div className="mx-auto max-w-[240px]">
+                      <div className="relative aspect-[9/16] w-full">
+                        <iframe
+                          className="absolute inset-0 h-full w-full"
+                          src={demoVideoSrc}
+                          title={`${project.title} demo video`}
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+            ) : null}
           </div>
         </div>
       </Modal>

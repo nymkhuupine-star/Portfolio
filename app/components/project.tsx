@@ -14,6 +14,7 @@ type ProjectEntry = {
   details: {
     screenshot?: string | null
     screenshotAlt?: string
+    demoVideo?: string | null
     whatItDoes: string
     problemSolved: string
     features: string[]
@@ -50,51 +51,53 @@ const projects: ProjectEntry[] = [
   {
     date: "2026-03-02",
     version: "1.2",
-    title: "Task Management App",
+    title: "DataViz Studio",
     description:
-      "Багийн ажлыг удирдах, дагах боломжтой төслийн менежмент систем. Real-time sync, drag & drop, notification систем.",
-    tags: ["React", "Node.js", "MongoDB", "Socket.io"],
-    highlights: ["Realtime updates (Socket.io)", "Drag & drop board (Kanban)", "Activity feed + notifications"],
+      "Excel датагаа upload хийж, AI prompt ашиглан автоматаар анализ хийж интерактив график болгон харуулдаг data visualization платформ.",
+    tags: ["Next.js", "Supabase", "React", "Recharts", "Gemini AI"],
+    highlights: ["Excel/CSV file upload хийх боломж", "AI prompt ашиглан дата анализ хийх", "Chart download болон embed хийх боломж"],
     github: "#",
-    live: "#",
-    details: {
-      screenshot: null,
+     live: "https://data-seven-black.vercel.app/",
+    details: {  
+      screenshot: "/dataviz.png",
       whatItDoes:
-        "Багийн даалгавар, явц, хариуцагч, хугацааг нэг дор төвлөрүүлж Канбан самбар дээр удирдах төслийн менежментийн веб апп.",
+        "DataViz Studio нь Excel эсвэл CSV файл доторх датагаа AI ашиглан автоматаар анализ хийж, ойлгомжтой интерактив график болон chart болгон харуулдаг платформ юм. Хэрэглэгч зөвхөн prompt бичихэд систем датагаа ойлгон тохирох visualization үүсгэдэг.",
       problemSolved:
-        "Багийн гишүүдийн хоорондын мэдээллийн алдагдал, олон сувгийн чат/спрэдшитээс үүддэг төөрөгдөл, статус хоцролтыг real-time синктэй болгож шийдсэн.",
+        "Ихэнх хүмүүс Excel доторх их хэмжээний датагаа гараар шүүж, chart үүсгэхэд цаг их зарцуулдаг бөгөөд техникийн мэдлэг шаарддаг. DataViz Studio нь AI ашиглан энэ процессыг автоматжуулж, датагаа хурдан ойлгож, шийдвэр гаргахад хялбар болгодог.",
       features: [
-        "Kanban самбар (drag & drop)",
-        "Socket.io дээр суурилсан realtime update",
-        "Activity feed + notifications",
-        "Төсөл/даалгаврын төлөв, хугацааны хяналт",
+        "Excel/CSV file upload хийх боломж",
+        "AI prompt ашиглан дата анализ хийх",
+        "Chart download болон embed хийх боломж",
+        "Автомат chart recommendation",
+        "Interactive chart visualization",
       ],
-      tech: ["React", "Node.js", "MongoDB", "Socket.io"],
+      tech: ["Next.js", "Supabase", "React", "Recharts", "Gemini AI"],
     },
   },
   {
     date: "2026-01-18",
     version: "0.9",
-    title: "AI Chat Application",
+    title: "SmartExam",
     description:
-      "OpenAI API ашиглан бүтээсэн ухаалаг чатбот аппликейшн. Streaming response, context memory, multi-language support.",
-    tags: ["Next.js", "OpenAI", "Vercel AI SDK"],
+      "AI болон proctoring технологи ашигласан online exam болон learning management system. Багш шалгалт үүсгэж, сурагч онлайнаар шалгалт өгч, систем автоматаар дүн болон тайлан боловсруулдаг.",
+    tags: ["Next.js", "OpenAI", "Supabase", "TypeScript", "Tailwind CSS"],
     highlights: ["Streaming responses + abort", "Conversation context + persistence", "Multi-language UX + prompt presets"],
     github: "#",
-    live: "#",
+    live: "https://pinequest-e2-team-8.vercel.app/",
     details: {
-      screenshot: null,
+      screenshot: "/smart1.png",
+      demoVideo: "https://player.cloudinary.com/embed/?cloud_name=dxzpmljjs&public_id=IMG_8965_1_hdai7w",
       whatItDoes:
-        "OpenAI API дээр суурилсан чат аппликейшн. Хэрэглэгчийн асуултад streaming хариу өгч, өмнөх ярианы контекстийг хадгалан илүү ухаалаг харилцан үйлчлэлийг хангана.",
+        "SmartExam нь багш, сурагч, админд зориулсан online exam болон learning management system (LMS) платформ юм. Багш нар шалгалт үүсгэж, хуваарилан, сурагчид онлайнаар шалгалт өгч, систем автоматаар дүн болон тайлан гаргадаг.",
       problemSolved:
-        "Удаан хүлээлттэй нэг дор буудаг хариуг streaming болгох, контекст хадгалалтгүйгээс үүддэг чанарын асуудлыг бууруулж — олон хэлний UX-тэй болгосон.",
+        "Уламжлалт шалгалтын процесс нь их хэмжээний гар ажиллагаа, цаг хугацаа шаарддаг бөгөөд онлайн шалгалтын үед хяналт болон удирдлага хийхэд хүндрэлтэй байдаг. PineExam нь шалгалтын процессийг автоматжуулж, AI болон proctoring технологи ашиглан илүү найдвартай, хялбар онлайн шалгалтын орчин бүрдүүлдэг.",
       features: [
-        "Streaming responses + Abort/Cancel",
-        "Conversation context + persistence",
-        "Multi-language UX + prompt presets",
-        "Хялбар UI/UX (clean, distraction-free)",
+        "Role-based access / Admin, Teacher, Student",
+        "Шалгалт үүсгэх, хуваарилах",
+        "Онлайн шалгалт өгөх flow",
+        "Автомат дүн болон тайлан",
       ],
-      tech: ["Next.js", "OpenAI API", "Vercel AI SDK", "Tailwind CSS"],
+      tech: ["Next.js", "OpenAI", "Supabase", "TypeScript", "Tailwind CSS"],
     },
   },
 ]

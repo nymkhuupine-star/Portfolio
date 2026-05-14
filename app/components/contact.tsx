@@ -89,7 +89,7 @@ return (
         {/* Холбоосууд (Цэвэрхэн, иконтой бүтэц) */}
         <div className="pt-6 flex flex-col gap-y-4 border-t border-foreground/5 text-sm sm:text-base text-foreground/70">
           <a 
-            href="mailto:hello@nyamkhuu.dev" 
+            href="mailto:dnymkhuu1@gmail.com" 
             className="flex items-center gap-x-3 group w-fit transition-colors hover:text-foreground"
           >
             <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-foreground/10 bg-foreground/[0.02] transition-colors group-hover:border-foreground/20">
@@ -97,7 +97,7 @@ return (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
               </svg>
             </div>
-            <span className="font-medium underline underline-offset-4 decoration-foreground/20 group-hover:decoration-foreground transition-all">hello@nyamkhuu.dev</span>
+            <span className="font-medium underline underline-offset-4 decoration-foreground/20 group-hover:decoration-foreground transition-all">dnymkhuu1@gmail.com</span>
           </a>
 
           <div className="flex items-center gap-x-3 text-foreground/60">
