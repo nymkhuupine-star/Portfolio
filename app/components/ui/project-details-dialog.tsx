@@ -170,43 +170,47 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
           <ProjectScreenshot screenshot={project.details.screenshot} alt={screenshotAlt} title={project.title} />
 
           <div className={cx("grid gap-8 items-start", demoVideoSrc ? "lg:grid-cols-[1fr_320px]" : false)}>
-            <div className="space-y-8">
-              <section>
-                <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Project юу хийдэг</h4>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.whatItDoes}</p>
-              </section>
+            <div className="grid gap-8 items-start md:grid-cols-2">
+              <div className="space-y-8">
+                <section>
+                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Project юу хийдэг</h4>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.whatItDoes}</p>
+                </section>
 
-              <section>
-                <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Ямар асуудал шийдсэн</h4>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.problemSolved}</p>
-              </section>
+                <section>
+                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Ямар асуудал шийдсэн</h4>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.problemSolved}</p>
+                </section>
+              </div>
 
-              <section>
-                <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Гол features</h4>
-                <ul className="mt-3 space-y-2 text-sm text-foreground/80">
-                  {project.details.features.map((feature) => (
-                    <li key={feature} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+              <div className="space-y-8">
+                <section>
+                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Гол features</h4>
+                  <ul className="mt-3 space-y-2 text-sm text-foreground/80">
+                    {project.details.features.map((feature) => (
+                      <li key={feature} className="flex gap-3">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
 
-              <div className="rounded-2xl border border-border/60 bg-secondary/30 p-5">
-                <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">Ашигласан tech</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.details.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className={cx(
-                        "rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-semibold",
-                        "text-foreground/80",
-                      )}
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="rounded-2xl border border-border/60 bg-secondary/30 p-5">
+                  <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">Ашигласан tech</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.details.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className={cx(
+                          "rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-semibold",
+                          "text-foreground/80",
+                        )}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

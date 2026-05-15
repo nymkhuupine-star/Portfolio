@@ -25,7 +25,7 @@ type ProjectEntry = {
 const projects: ProjectEntry[] = [
   {
     date: "2026-04-20",
-    version: "2.1",
+    version: "LIVE",
     title: "Employee Benefits Management System",
     description:
       "HR болон ажилтнуудад зориулсан benefit eligibility, request, approval процессыг автоматжуулсан management system.",
@@ -45,33 +45,42 @@ const projects: ProjectEntry[] = [
         "Гэрээт benefit удирдлагын workflow",
         "Attendance болон OKR-тэй холбогдсон rule system",
       ],
-      tech: ["Next.js", "TypeScript", "Stripe", "Prisma", "Tailwind CSS"],
+      tech: ["Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "TMDB API",
+  "Axios",],
     },
   },
   {
     date: "2026-03-02",
-    version: "1.2",
-    title: "DataViz Studio",
+    version: "LIVE",
+    title: "Movie Discovery App",
     description:
-      "Excel датагаа upload хийж, AI prompt ашиглан автоматаар анализ хийж интерактив график болгон харуулдаг data visualization платформ.",
+      "TMDB API ашиглан кино хайх, ангиллаар үзэх, дэлгэрэнгүй мэдээлэл болон трейлер харах боломжтой movie discovery web app.",
     tags: ["Next.js", "Supabase", "React", "Recharts", "Gemini AI"],
-    highlights: ["Excel/CSV file upload хийх боломж", "AI prompt ашиглан дата анализ хийх", "Chart download болон embed хийх боломж"],
+    highlights: ["Кино хайх боломж",  "Popular, Upcoming, Top Rated кинонууд үзэх","Киноны дэлгэрэнгүй мэдээлэл болон trailer харах"],
     github: "#",
-     live: "https://data-seven-black.vercel.app/",
+     live: "https://movie-site-two-alpha.vercel.app/",
     details: {  
-      screenshot: "/dataviz.png",
+      screenshot: "/movie.png",
       whatItDoes:
-        "DataViz Studio нь Excel эсвэл CSV файл доторх датагаа AI ашиглан автоматаар анализ хийж, ойлгомжтой интерактив график болон chart болгон харуулдаг платформ юм. Хэрэглэгч зөвхөн prompt бичихэд систем датагаа ойлгон тохирох visualization үүсгэдэг.",
+        "Movie Z нь TMDB API ашиглан хэрэглэгчдэд кино хайх, popular, upcoming, top rated кинонуудыг үзэх, мөн тухайн киноны дэлгэрэнгүй мэдээлэл, үнэлгээ, release date болон trailer харах боломж олгодог movie discovery web app юм.",
       problemSolved:
-        "Ихэнх хүмүүс Excel доторх их хэмжээний датагаа гараар шүүж, chart үүсгэхэд цаг их зарцуулдаг бөгөөд техникийн мэдлэг шаарддаг. DataViz Studio нь AI ашиглан энэ процессыг автоматжуулж, датагаа хурдан ойлгож, шийдвэр гаргахад хялбар болгодог.",
+        "Хэрэглэгч олон өөр эх сурвалжаас кино хайж цаг алдахгүйгээр нэг платформоос киноны мэдээлэл, ангилал, үнэлгээ болон trailer-ийг хурдан харах боломжтой болгодог.",
       features: [
-        "Excel/CSV file upload хийх боломж",
-        "AI prompt ашиглан дата анализ хийх",
-        "Chart download болон embed хийх боломж",
-        "Автомат chart recommendation",
-        "Interactive chart visualization",
+    "Genre-ээр кино шүүх боломж",
+    "Movie detail page",
+    "Trailer үзэх боломж",
+    "Responsive UI",
       ],
-      tech: ["Next.js", "Supabase", "React", "Recharts", "Gemini AI"],
+      tech: ["Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "TMDB API",
+  "Axios",],
     },
   },
   {
@@ -100,9 +109,86 @@ const projects: ProjectEntry[] = [
       tech: ["Next.js", "OpenAI", "Supabase", "TypeScript", "Tailwind CSS"],
     },
   },
+  {
+    date: "2025-12-10",
+    version: "LIVE",
+    title: "Food delivery",
+    description:
+      "Орчин үеийн food delivery платформын UI/UX загвараар бүтээгдсэн, responsive дизайнтай хоол захиалгын веб апп.",
+    tags: [ "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",],
+    highlights: ["Modern UI/UX дизайн",
+  "Responsive layout",
+  "Dynamic food categories",
+  "Interactive food cards"],
+    github: "#",
+    live: "https://food-delivery-front-end-silk.vercel.app/",
+    details: {
+      screenshot: null,
+      whatItDoes:
+        "Food Delivery нь хэрэглэгчдэд төрөл бүрийн хоолыг ангиллаар харах, бүтээгдэхүүнүүдийг судлах болон орчин үеийн food delivery платформын мэдрэмжтэй UI/UX туршлага авах боломж олгодог веб апп юм.",
+      problemSolved:
+        "Хуучин загварын food ordering системүүд ихэвчлэн хэрэглэгчийн туршлага сул, mobile responsive биш байдаг. Энэхүү төсөл нь modern UI/UX, responsive дизайн болон цэвэр интерфэйс ашиглан илүү ойлгомжтой, хэрэглэгч төвтэй food delivery experience бий болгоход чиглэсэн.",
+      features: [  "Dynamic food categories",
+    "Responsive mobile-friendly дизайн",
+    "Interactive food cards",
+    "Smooth hover animations",
+    ],
+      tech: [ "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS"],
+    },
+  },
+  {
+    date: "Small projects",
+    version: "LIVE",
+    title: "AI Image Generator",
+    description:
+      "Text prompt-оор зураг үүсгэх болон зурагнаас AI prompt гаргаж авах боломжтой AI-powered web app.",
+    tags: [ "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "AI Integration",],
+    highlights: [ "Text-to-image generation",
+  "Image-to-prompt analysis",
+  "Responsive modern UI",
+  "Interactive AI workflow",],
+    github: "#",
+    live: "https://ai-image-model-front-end.vercel.app/",
+    details: {
+      screenshot: null,
+      whatItDoes:
+        "AI Image Generator нь хэрэглэгчийн оруулсан text prompt-ийг ашиглан AI зураг үүсгэхээс гадна, upload хийсэн зургаас AI prompt болон description автоматаар гаргаж өгдөг web app юм.",
+      problemSolved:
+        "Хэрэглэгчид AI зураг үүсгэхдээ зөв prompt бичихэд хүндрэлтэй байдаг. Энэхүү платформ нь зурагнаас prompt гаргаж авах болон prompt-оор зураг үүсгэх боломжийг нэг дор нэгтгэснээр AI content creation процессыг илүү хялбар болгодог.",
+      features: ["Text-to-image AI generation",
+    "Image upload and prompt extraction",
+    "AI-generated image descriptions",
+    "Interactive AI workflow",
+   ],
+      tech: ["Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "AI API Integration"],
+    },
+  },
+   
 ]
 
 export function Projects() {
+  const seenKeys = new Set<string>()
+  const uniqueProjects = projects.filter((project) => {
+    const key = `${project.date}-${project.title}`
+    if (seenKeys.has(key)) return false
+    seenKeys.add(key)
+    return true
+  })
+
   return (
     <section id="projects" className="px-8 py-28">
       <div className="mx-auto max-w-6xl">
@@ -116,7 +202,7 @@ export function Projects() {
           <div className="absolute left-3 top-0 h-full w-px bg-border md:left-[152px]" aria-hidden="true" />
 
           <ul className="space-y-10">
-            {projects.map((project) => (
+            {uniqueProjects.map((project) => (
               <li
                 key={`${project.date}-${project.title}`}
                 className="relative pl-10 md:grid md:grid-cols-[140px_1fr] md:gap-10 md:pl-0"
