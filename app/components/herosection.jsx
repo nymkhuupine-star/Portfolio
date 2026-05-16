@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section
       id="top"
-      className="flex min-h-[calc(100svh-80px)] w-full items-center"
+      className="flex w-full items-center md:min-h-[calc(100svh-80px)]"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 md:flex-row md:justify-between">
         {/* LEFT TEXT */}
@@ -52,7 +52,7 @@ export default function HeroSection() {
 
             <a
               href="/cv.pdf"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/5 sm:w-auto"
+              className="hidden sm:inline-flex w-full items-center justify-center gap-2 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/5 sm:w-auto"
             >
               <Download className="h-4 w-4" />
               CV татах
@@ -61,7 +61,7 @@ export default function HeroSection() {
         </div>
 
       {/* RIGHT IMAGE */}
-<div className="relative mt-10 w-full max-w-sm overflow-hidden pt-16 sm:pt-24 md:mt-0 md:w-[42%] md:overflow-visible md:pt-40">
+<div className="relative mt-6 w-full max-w-sm overflow-visible pt-36 md:mt-0 md:w-[42%] md:overflow-visible md:pt-40">
   <div className="relative mx-auto w-[90%]">
     
     {/* ХӨДӨЛГӨӨНГҮЙ, ЦЭВЭРХЭН АРЫН СҮҮДЭР БА ЗУРААСНУУД */}
@@ -166,7 +166,7 @@ export default function HeroSection() {
             />
 
             {/* Floating tech badges */}
-            <div className="pointer-events-none absolute inset-0 z-20 select-none">
+            <div className="pointer-events-none absolute inset-0 z-20 select-none hidden md:block">
               <div className="absolute left-[-18%] top-[18%] grid size-[42px] place-items-center rounded-full border border-violet-500/15 bg-white/90 text-[12px] font-semibold text-violet-600 shadow-[0_14px_40px_rgba(124,58,237,0.14)] opacity-90 backdrop-blur-md md:left-[-20%] md:top-[22%] hover:scale-110 transition-transform">
                 {"</>"}
               </div>
@@ -200,7 +200,7 @@ export default function HeroSection() {
             alt="Earphones"
             width={280}
             height={888}
-            className="pointer-events-none absolute right-2 top-[-51px] z-20 w-[22%] rotate-6 pt-53 md:right-4 md:w-[24%]"
+            className="pointer-events-none absolute right-2 top-[118px] z-20 w-[22%] rotate-6 md:right-4 md:top-[-51px] md:w-[24%]"
             style={{ clipPath: "inset(12% 0 0 0)" }}
           />
         </div>

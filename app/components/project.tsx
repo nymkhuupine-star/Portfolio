@@ -221,10 +221,10 @@ export function Projects() {
                   aria-hidden="true"
                 />
 
-                <article className="rounded-2xl border border-border/60 bg-card p-6 shadow-sm">
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
-                    <div className="flex items-center gap-3">
+                <article className="mt-3 rounded-2xl border border-border/60 bg-card p-6 shadow-sm md:mt-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="min-w-0 flex-1 text-lg font-semibold text-foreground">{project.title}</h3>
+                    <div className="flex shrink-0 items-center gap-3">
                       {project.github && project.github !== "#" ? (
                         <Link
                           href={project.github}

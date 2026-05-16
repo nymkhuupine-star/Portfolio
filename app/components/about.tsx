@@ -54,11 +54,11 @@ export function About() {
           </div>
           
           {/* БАРУУН ТАЛ: ГЭРЭЛТЭХ ХҮРЭЭТЭЙ 3 КАРТ */}
-          <div className="space-y-7.5 pt-12">
+          <div className="space-y-6 lg:pt-4">
             {highlights.map((item, index) => (
               <div 
                 key={index}
-                className={`relative overflow-hidden flex gap-5 p-5.5  rounded-[28px] bg-card/60 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${item.glowClass}`}
+                className={`relative overflow-hidden flex gap-5 p-5  rounded-[28px] bg-card/60 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${item.glowClass}`}
               >
                 {/* Булангийн зөөлөн неон туяа (Glow Effect) */}
                 <div className={`absolute -right-8 -top-8 h-20 w-20 rounded-full blur-2xl opacity-70 ${item.glowBg}`} />

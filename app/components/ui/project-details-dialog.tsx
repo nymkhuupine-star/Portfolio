@@ -36,7 +36,7 @@ function PrimaryLink({ href, children }: { href: string; children: ReactNode }) 
   return (
     <Link
       href={href}
-      className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+      className="inline-flex h-8 items-center justify-center rounded-full bg-primary px-3 text-xs font-semibold text-primary-foreground shadow-sm transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 sm:h-9 sm:px-4 sm:text-sm"
       target="_blank"
       rel="noreferrer"
     >
@@ -193,8 +193,8 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
         headerActions={
           hasLive ? (
             <PrimaryLink href={project.live!}>
-              <span className="inline-flex items-center gap-2">
-                <ExternalLink className="h-4 w-4" />
+              <span className="inline-flex items-center gap-1.5">
+                <ExternalLink className="h-3.5 w-3.5 shrink-0" />
                 Live Demo
               </span>
             </PrimaryLink>
