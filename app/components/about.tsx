@@ -30,7 +30,7 @@ const highlights = [
 
 export function About() {
   return (
-    <section id="about" className="py-28 px-8 relative overflow-hidden">
+    <section id="about" className="relative overflow-hidden px-4 py-24 sm:px-8 sm:py-28">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* ЗҮҮН ТАЛ: ТЕКСТ ХЭСЭГ */}

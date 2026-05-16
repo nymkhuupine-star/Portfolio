@@ -7,9 +7,9 @@ export default function HeroSection() {
       id="top"
       className="flex min-h-[calc(100svh-80px)] w-full items-center"
     >
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-6 py-20 md:flex-row md:justify-between">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 md:flex-row md:justify-between">
         {/* LEFT TEXT */}
-        <div className="max-w-xl text-left">
+        <div className="max-w-xl text-center md:text-left">
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 rounded-full bg-foreground/5 px-4 py-2 text-sm font-medium text-foreground/70 ring-1 ring-foreground/10">
             <span className="relative flex h-2 w-2">
@@ -21,9 +21,9 @@ export default function HeroSection() {
 
           {/* Heading */}
          {/* Heading */}
-<h1 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-5xl leading-[1.25]">
+<h1 className="mt-6 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl leading-[1.25]">
   Сайн байна уу, Би 
-  <br />
+  <br className="hidden sm:block" />
   <span className="inline-block pb-2 text-foreground/90 underline decoration-indigo-500 decoration-wavy decoration-2">
     Full-Stack Developer
   </span>
@@ -31,7 +31,7 @@ export default function HeroSection() {
 
 
           {/* Tagline */}
-          <p className="mt-6 text-xl font-bold tracking-wide text-foreground/80">
+          <p className="mt-6 text-lg font-bold tracking-wide text-foreground/80 sm:text-xl">
             Дижитал бүтээгдэхүүнийг төгс гүйцэтгэлтэй урлана.
           </p>
 
@@ -41,10 +41,10 @@ export default function HeroSection() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center md:justify-start">
             <a
               href="#projects"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-all duration-300 hover:bg-foreground/90 hover:scale-[1.02] shadow-md"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background shadow-md transition-all duration-300 hover:bg-foreground/90 hover:scale-[1.02] sm:w-auto"
             >
               Төслүүд үзэх
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -52,7 +52,7 @@ export default function HeroSection() {
 
             <a
               href="/cv.pdf"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/5"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/5 sm:w-auto"
             >
               <Download className="h-4 w-4" />
               CV татах
@@ -61,7 +61,7 @@ export default function HeroSection() {
         </div>
 
       {/* RIGHT IMAGE */}
-<div className="relative mt-10 w-full max-w-sm overflow-visible pt-40 md:mt-0 md:w-[42%]">
+<div className="relative mt-10 w-full max-w-sm overflow-hidden pt-16 sm:pt-24 md:mt-0 md:w-[42%] md:overflow-visible md:pt-40">
   <div className="relative mx-auto w-[90%]">
     
     {/* ХӨДӨЛГӨӨНГҮЙ, ЦЭВЭРХЭН АРЫН СҮҮДЭР БА ЗУРААСНУУД */}

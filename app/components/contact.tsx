@@ -63,7 +63,7 @@ export function Contact() {
   }
 
 return (
-  <section id="contact" className="px-6 py-24 md:py-32">
+  <section id="contact" className="px-4 py-24 sm:px-6 md:py-32">
     <div className="mx-auto grid w-full max-w-6xl gap-16 lg:grid-cols-2 lg:items-center">
       
       {/* LEFT: Мэдээллийн хэсэг */}

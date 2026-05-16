@@ -3,11 +3,13 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
-import { useMemo, useState, type ReactNode } from "react"
+import { useMemo, useState, useEffect, type ReactNode } from "react"
 import { Modal } from "./modal"
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots, type CarouselApi } from "./carousel"
 
 type ProjectDetails = {
   screenshot?: string | null
+  screenshots?: string[]
   screenshotAlt?: string
   demoVideo?: string | null
   whatItDoes: string
@@ -43,15 +45,48 @@ function PrimaryLink({ href, children }: { href: string; children: ReactNode }) 
   )
 }
 
+function ScreenshotCarousel({ screenshots, alt }: { screenshots: string[]; alt: string }) {
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    if (!api) return
+    api.on("select", () => setCurrent(api.selectedScrollSnap()))
+  }, [api])
+
+  return (
+    <Carousel setApi={setApi} className="w-full">
+      <CarouselContent>
+        {screenshots.map((src, i) => (
+          <CarouselItem key={src}>
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border/60 bg-secondary">
+              <Image src={src} alt={`${alt} ${i + 1}`} fill sizes="(max-width: 1024px) 100vw, 1024px" className="object-contain" />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+      <CarouselDots count={screenshots.length} current={current} />
+    </Carousel>
+  )
+}
+
 function ProjectScreenshot({
   screenshot,
+  screenshots,
   alt,
   title,
 }: {
   screenshot?: string | null
+  screenshots?: string[]
   alt: string
   title: string
 }) {
+  if (screenshots && screenshots.length > 0) {
+    return <ScreenshotCarousel screenshots={screenshots} alt={alt} />
+  }
+
   if (screenshot) {
     return (
       <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border/60 bg-secondary">
@@ -167,7 +202,7 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
         }
       >
         <div className="space-y-8">
-          <ProjectScreenshot screenshot={project.details.screenshot} alt={screenshotAlt} title={project.title} />
+          <ProjectScreenshot screenshot={project.details.screenshot} screenshots={project.details.screenshots} alt={screenshotAlt} title={project.title} />
 
           <div className={cx("grid gap-8 items-start", demoVideoSrc ? "lg:grid-cols-[1fr_320px]" : false)}>
             <div className="grid gap-8 items-start md:grid-cols-2">

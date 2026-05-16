@@ -164,6 +164,7 @@ export function ExpandableScreenContent({
   useLayoutEffect(() => {
     if (!isExpanded) return
     const rect = triggerRef.current?.getBoundingClientRect() ?? null
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: drive enter animation when expanding.
     setFromRect(rect)
     setIsVisible(true)
     setIsAnimating(false)
@@ -179,6 +180,7 @@ export function ExpandableScreenContent({
   useEffect(() => {
     if (!isVisible) return
     if (isExpanded) return
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: drive exit animation when collapsing.
     setIsAnimating(false)
 
     const timeout = window.setTimeout(() => setIsVisible(false), Math.max(0, animationDuration * 1000))

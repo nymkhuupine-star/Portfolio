@@ -83,7 +83,7 @@ export function Skills() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section id="skills" className="relative py-28 px-6 overflow-hidden">
+    <section id="skills" className="relative py-24 px-4 overflow-hidden sm:py-28 sm:px-6">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(56,189,248,0.04),transparent_60%),radial-gradient(900px_520px_at_50%_110%,rgba(168,85,247,0.04),transparent_55%)]" />
         <div
@@ -96,7 +96,7 @@ export function Skills() {
         <p className="text-sm font-semibold text-primary/90 mb-3 tracking-[0.25em] uppercase">
           Миний ур чадвар
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
           Ашигладаг технологиуд
         </h2>
       </div>
@@ -111,7 +111,7 @@ export function Skills() {
           return (
             <motion.div
               key={category.title}
-              className={`group relative w-[300px] h-[300px] flex items-center justify-center select-none ${spacingClass}`}
+              className={`group relative h-[280px] w-[280px] flex items-center justify-center select-none sm:h-[300px] sm:w-[300px] ${spacingClass}`}
               style={{ zIndex: stack }}
               whileHover={reduceMotion ? {} : { scale: 1.01, y: -8, zIndex: 90 }}
               transition={{ type: "spring", stiffness: 350, damping: 25 }}
@@ -147,7 +147,7 @@ export function Skills() {
               </svg>
 
               {/* Текст болон Икон агуулга */}
-              <div className="relative z-20 w-full h-full pt-12 pb-8 px-10 flex flex-col gap-4 pointer-events-auto">
+              <div className="relative z-20 h-full w-full px-8 pb-6 pt-10 flex flex-col gap-4 pointer-events-auto sm:px-10 sm:pb-8 sm:pt-12">
                 <div className="pl-2">
                   <div className="w-9 h-9 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-105">
                     <category.icon className={`w-4 h-4 ${category.iconColor}`} />

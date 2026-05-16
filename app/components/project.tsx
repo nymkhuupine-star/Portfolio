@@ -13,6 +13,7 @@ type ProjectEntry = {
   live?: string
   details: {
     screenshot?: string | null
+    screenshots?: string[]
     screenshotAlt?: string
     demoVideo?: string | null
     whatItDoes: string
@@ -24,7 +25,7 @@ type ProjectEntry = {
 
 const projects: ProjectEntry[] = [
   {
-    date: "2026-04-20",
+    date: "2026",
     version: "LIVE",
     title: "Employee Benefits Management System",
     description:
@@ -54,7 +55,7 @@ const projects: ProjectEntry[] = [
     },
   },
   {
-    date: "2026-03-02",
+    date: "2025",
     version: "LIVE",
     title: "Movie Discovery App",
     description:
@@ -64,7 +65,7 @@ const projects: ProjectEntry[] = [
     github: "#",
      live: "https://movie-site-two-alpha.vercel.app/",
     details: {  
-      screenshot: "/movie.png",
+      screenshot: "/moviename.png",
       whatItDoes:
         "Movie Z нь TMDB API ашиглан хэрэглэгчдэд кино хайх, popular, upcoming, top rated кинонуудыг үзэх, мөн тухайн киноны дэлгэрэнгүй мэдээлэл, үнэлгээ, release date болон trailer харах боломж олгодог movie discovery web app юм.",
       problemSolved:
@@ -84,7 +85,7 @@ const projects: ProjectEntry[] = [
     },
   },
   {
-    date: "2026-01-18",
+    date: "2026",
     version: "0.9",
     title: "SmartExam",
     description:
@@ -110,7 +111,7 @@ const projects: ProjectEntry[] = [
     },
   },
   {
-    date: "2025-12-10",
+    date: "2025",
     version: "LIVE",
     title: "Food delivery",
     description:
@@ -127,6 +128,7 @@ const projects: ProjectEntry[] = [
     live: "https://food-delivery-front-end-silk.vercel.app/",
     details: {
       screenshot: null,
+      screenshots: ["/food1.png", "/food2.png", "/food3.png", "/food4.png"],
       whatItDoes:
         "Food Delivery нь хэрэглэгчдэд төрөл бүрийн хоолыг ангиллаар харах, бүтээгдэхүүнүүдийг судлах болон орчин үеийн food delivery платформын мэдрэмжтэй UI/UX туршлага авах боломж олгодог веб апп юм.",
       problemSolved:
@@ -143,8 +145,8 @@ const projects: ProjectEntry[] = [
     },
   },
   {
-    date: "Small projects",
-    version: "LIVE",
+    date: "2025",
+    version: "Small project",
     title: "AI Image Generator",
     description:
       "Text prompt-оор зураг үүсгэх болон зурагнаас AI prompt гаргаж авах боломжтой AI-powered web app.",
@@ -160,7 +162,7 @@ const projects: ProjectEntry[] = [
     github: "#",
     live: "https://ai-image-model-front-end.vercel.app/",
     details: {
-      screenshot: null,
+      screenshot: "/prompt1.png",
       whatItDoes:
         "AI Image Generator нь хэрэглэгчийн оруулсан text prompt-ийг ашиглан AI зураг үүсгэхээс гадна, upload хийсэн зургаас AI prompt болон description автоматаар гаргаж өгдөг web app юм.",
       problemSolved:
@@ -190,7 +192,7 @@ export function Projects() {
   })
 
   return (
-    <section id="projects" className="px-8 py-28">
+    <section id="projects" className="px-4 py-24 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <p className="mb-4 text-center text-sm font-semibold tracking-widest text-primary uppercase">Портфолио</p>
         <h2 className="mb-6 text-center text-3xl font-bold text-foreground md:text-4xl">Сонгомол төслүүд</h2>
