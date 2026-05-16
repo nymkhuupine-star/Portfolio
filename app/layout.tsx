@@ -19,13 +19,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Pine Nymkhuu — Frontend Developer Portfolio",
+  title: "Pine Nymkhuu — Full Stack Developer Portfolio",
   description:
     "Portfolio of Pine Nymkhuu — building modern, responsive web apps with Next.js, Tailwind, and animations.",
   openGraph: {
-    title: "Pine Nymkhuu — Frontend Developer Portfolio",
+    title: "Pine Nymkhuu — Full Stack Developer Portfolio",
     description:
-      "Modern portfolio showcasing projects, UI/UX design, and frontend development skills.",
+      "Modern portfolio showcasing full stack projects, UI/UX design, and web development skills.",
     type: "website",
   },
 };
