@@ -251,7 +251,7 @@ const PROJECTS: Record<Locale, ProjectEntry[]> = {
     },
     {
       date: "2026",
-      version: "0.9",
+      version: "LIVE",
       title: "SmartExam",
       description:
         "An AI-powered online exam and learning management system (LMS) with proctoring. Teachers create and assign exams, students take them online, and the system generates scores and reports automatically.",
