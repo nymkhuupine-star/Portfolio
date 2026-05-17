@@ -1,7 +1,31 @@
 import { ArrowRight, Download } from "lucide-react";
 import Image from "next/image";
 
-export default function HeroSection() {
+const COPY = {
+  mn: {
+    status: "Шинэ төсөлд ажиллахад нээлттэй",
+    greeting: "Сайн байна уу,",
+    role: "Full-Stack Developer",
+    tagline: "Дижитал бүтээгдэхүүнийг төгс гүйцэтгэлтэй бүтээнэ.",
+    description:
+      "React, Next.js болон TypeScript экосистемд суурилан, хэрэглэгчийн хэрэгцээнд бүрэн нийцсэн, өндөр хурдтай, цэвэр кодын бүтэцтэй вэб аппликейшнуудыг хөгжүүлдэг.",
+    viewProjects: "Төслүүд үзэх",
+    downloadCv: "CV татах",
+  },
+  en: {
+    status: "Open to new projects",
+    greeting: "Hello,",
+    role: "Full-Stack Developer",
+    tagline: "I build high-performing digital products.",
+    description:
+      "I build fast, user-focused web applications with clean architecture—grounded in the React, Next.js, and TypeScript ecosystem.",
+    viewProjects: "View projects",
+    downloadCv: "Download CV",
+  },
+};
+
+export default function HeroSection({ locale = "mn" }) {
+  const t = locale === "en" ? COPY.en : COPY.mn;
   return (
     <section
       id="top"
@@ -16,28 +40,28 @@ export default function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Шинэ төсөлд ажиллахад нээлттэй
+            {t.status}
           </div>
 
           {/* Heading */}
          {/* Heading */}
 <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl leading-[1.25]">
-  Сайн байна уу, Би 
+  {t.greeting} 
   <br className="hidden sm:block" />
   <span className="inline-block pb-2 text-foreground/90 underline decoration-indigo-500 decoration-wavy decoration-2">
-    Full-Stack Developer
+    {t.role}
   </span>
 </h1>
 
 
           {/* Tagline */}
           <p className="mt-6 text-lg font-bold tracking-wide text-foreground/80 sm:text-xl">
-            Дижитал бүтээгдэхүүнийг төгс гүйцэтгэлтэй урлана.
+            {t.tagline}
           </p>
 
           {/* Description */}
           <p className="mt-4 max-w-lg text-base leading-relaxed text-foreground/60">
-            React, Next.js болон TypeScript экосистемд суурилан, хэрэглэгчийн хэрэгцээнд бүрэн нийцсэн, өндөр хурдтай, цэвэр кодын бүтэцтэй вэб аппликейшнуудыг хөгжүүлдэг.
+            {t.description}
           </p>
 
           {/* CTA Buttons */}
@@ -46,7 +70,7 @@ export default function HeroSection() {
               href="#projects"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background shadow-md transition-all duration-300 hover:bg-foreground/90 hover:scale-[1.02] sm:w-auto"
             >
-              Төслүүд үзэх
+              {t.viewProjects}
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
@@ -55,7 +79,7 @@ export default function HeroSection() {
               className="hidden sm:inline-flex w-full items-center justify-center gap-2 rounded-full border border-foreground/15 px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground/5 sm:w-auto"
             >
               <Download className="h-4 w-4" />
-              CV татах
+              {t.downloadCv}
             </a>
           </div>
         </div>

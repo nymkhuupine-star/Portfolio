@@ -2,6 +2,18 @@
 
 import { motion, useReducedMotion } from "framer-motion"
 import { Code2, Database, Globe, Wrench } from "lucide-react"
+import type { Locale } from "../i18n"
+
+const COPY = {
+  mn: {
+    eyebrow: "Миний ур чадвар",
+    title: "Ашигладаг технологиуд",
+  },
+  en: {
+    eyebrow: "My skills",
+    title: "Technologies I use",
+  },
+}
 
 const skillCategories = [
   {
@@ -79,8 +91,9 @@ const puzzlePaths = [
   "M 30,54 C 30,40 40,30 54,30 L 134,30 C 134,60 186,60 186,30 L 266,30 C 280,30 290,40 290,54 L 290,134 C 320,134 320,186 290,186 L 290,266 C 290,280 280,290 266,290 L 186,290 C 186,320 134,320 134,290 L 54,290 C 40,290 30,280 30,266 L 30,186 C 0,186 0,134 30,134 Z",
 ]
 
-export function Skills() {
+export function Skills({ locale }: { locale: Locale }) {
   const reduceMotion = useReducedMotion()
+  const t = locale === "en" ? COPY.en : COPY.mn
 
   return (
     <section id="skills" className="relative py-24 px-4 overflow-hidden sm:py-28 sm:px-6">
@@ -94,10 +107,10 @@ export function Skills() {
 
       <div className="max-w-6xl mx-auto mb-14 text-center">
         <p className="text-sm font-semibold text-primary/90 mb-3 tracking-[0.25em] uppercase">
-          Миний ур чадвар
+          {t.eyebrow}
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-          Ашигладаг технологиуд
+          {t.title}
         </h2>
       </div>
 

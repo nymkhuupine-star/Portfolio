@@ -7,18 +7,22 @@ import Header from "./components/header";
 import HeroSection from "./components/herosection";
 import { Projects } from "./components/project";
 import { Skills } from "./components/skills";
+import { cookies } from "next/headers";
+import { resolveLocale } from "./i18n";
 
-export default function Home() {
+export default async function Home() {
+  const locale = resolveLocale((await cookies()).get("lang")?.value);
+
   return (
     <>
-      <Header />
+      <Header locale={locale} />
       <main className="flex-1">
-      <HeroSection />
-      <About/>
-      <Projects/>
-      <Skills/>
-      <Contact/>
-      <Footer/>
+      <HeroSection locale={locale} />
+      <About locale={locale} />
+      <Projects locale={locale} />
+      <Skills locale={locale} />
+      <Contact locale={locale} />
+      <Footer locale={locale} />
       </main>
     </>
   );

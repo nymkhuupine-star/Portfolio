@@ -1,7 +1,17 @@
 "use client"
 
-export function Footer() {
+const COPY = {
+  mn: {
+    rights: "Бүх эрх хуулиар хамгаалагдсан.",
+  },
+  en: {
+    rights: "All rights reserved.",
+  },
+};
+
+export function Footer({ locale = "mn" }) {
   const currentYear = new Date().getFullYear()
+  const t = locale === "en" ? COPY.en : COPY.mn
 
   return (
     <footer className="w-full border-t border-foreground/5 bg-background py-8 px-4 relative z-10 sm:px-6">
@@ -14,9 +24,9 @@ export function Footer() {
             href="https://nyamkhuu.dev" 
             className="text-foreground/60 transition-colors hover:text-foreground underline underline-offset-4 decoration-foreground/10 hover:decoration-foreground"
           >
-           
+            Pine Nymkhuu
           </a>
-          <span>Бүх эрх хуулиар хамгаалагдсан.</span>
+          <span>{t.rights}</span>
         </div>
 
         {/* Баруун тал: Сошиал холбоосууд */}

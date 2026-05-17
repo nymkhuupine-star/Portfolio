@@ -5,16 +5,52 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./theme-toggle";
 
-const NAV_LINKS = [
-  { href: "#about", label: "Миний тухай" },
-  { href: "#experience", label: "Туршлага" },
-  { href: "#projects", label: "Төслүүд" },
-  { href: "#contact", label: "Холбоо барих" },
-];
+const NAV_LINKS = {
+  mn: [
+    { href: "#about", label: "Миний тухай" },
+    { href: "#experience", label: "Туршлага" },
+    { href: "#projects", label: "Төслүүд" },
+    { href: "#contact", label: "Холбоо барих" },
+  ],
+  en: [
+    { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ],
+};
 
-export default function Header() {
+const COPY = {
+  mn: {
+    contactCta: "Холбогдох",
+    downloadCv: "CV татах",
+    switchTo: "Англи хэл рүү солих",
+  },
+  en: {
+    contactCta: "Get in touch",
+    downloadCv: "Download CV",
+    switchTo: "Switch to Mongolian",
+  },
+};
+
+function setLangCookie(locale) {
+  const maxAge = 60 * 60 * 24 * 365; // 1 year
+  document.cookie = `lang=${locale}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+}
+
+export default function Header({ locale = "mn" }) {
+  const safeLocale = locale === "en" ? "en" : "mn";
+  const links = NAV_LINKS[safeLocale];
+  const text = COPY[safeLocale];
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleLanguage = () => {
+    const next = safeLocale === "mn" ? "en" : "mn";
+    setLangCookie(next);
+    window.location.reload();
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -68,7 +104,7 @@ export default function Header() {
             </span>
           </a>
           <nav className="hidden flex-1 items-center justify-center gap-10 text-sm font-medium text-foreground/70 md:flex">
-            {NAV_LINKS.map((link) => (
+            {links.map((link) => (
               <a key={link.href} href={link.href} className="transition-colors hover:text-foreground">
                 {link.label}
               </a>
@@ -77,11 +113,19 @@ export default function Header() {
 
           <div className="flex shrink-0 items-center gap-3">
             <ThemeToggle />
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={text.switchTo}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/10 bg-foreground/[0.03] text-foreground/70 shadow-sm transition-colors hover:bg-foreground/[0.06] hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:focus-visible:ring-white/40"
+            >
+              <span className="text-[11px] font-bold tracking-widest">{safeLocale === "mn" ? "EN" : "MN"}</span>
+            </button>
             <a
               href="#contact"
               className="hidden items-center justify-center rounded-full bg-foreground px-6 py-2.5 text-sm font-semibold text-background shadow-sm transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 sm:inline-flex"
             >
-              Холбогдох
+              {text.contactCta}
             </a>
 
             <button
@@ -113,7 +157,7 @@ export default function Header() {
               className="rounded-3xl border border-foreground/10 bg-background/90 p-4 shadow-[0_28px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
             >
               <nav className="flex flex-col gap-1">
-                {NAV_LINKS.map((link) => (
+                {links.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
@@ -131,14 +175,14 @@ export default function Header() {
                   className="inline-flex items-center justify-center rounded-2xl bg-foreground px-4 py-3 text-sm font-semibold text-background shadow-sm transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Холбогдох
+                  {text.contactCta}
                 </a>
                 <a
                   href="/cv.pdf"
                   className="inline-flex items-center justify-center rounded-2xl border border-foreground/15 bg-background px-4 py-3 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-foreground/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20"
                   onClick={() => setMenuOpen(false)}
                 >
-                  CV татах
+                  {text.downloadCv}
                 </a>
               </div>
             </div>

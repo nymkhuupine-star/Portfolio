@@ -6,6 +6,32 @@ import { ExternalLink } from "lucide-react"
 import { useMemo, useState, useEffect, type ReactNode } from "react"
 import { Modal } from "./modal"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots, type CarouselApi } from "./carousel"
+import type { Locale } from "../../i18n"
+
+const COPY = {
+  mn: {
+    details: "Дэлгэрэнгүй",
+    modalDescription: "Төслийн дэлгэрэнгүй",
+    preview: "Танилцуулга",
+    screenshotPlaceholder: "Screenshot нэмэхэд автоматаар энд харагдана.",
+    whatItDoes: "Project юу хийдэг",
+    problemSolved: "Ямар асуудал шийдсэн",
+    features: "Гол онцлогууд",
+    tech: "Ашигласан технологи",
+    demoVideo: "Туршилтын видео",
+  },
+  en: {
+    details: "Details",
+    modalDescription: "Project details",
+    preview: "Preview",
+    screenshotPlaceholder: "A screenshot will appear here once one is added.",
+    whatItDoes: "What it does",
+    problemSolved: "Problem it solves",
+    features: "Key features",
+    tech: "Tech stack",
+    demoVideo: "Demo video",
+  },
+}
 
 type ProjectDetails = {
   screenshot?: string | null
@@ -77,11 +103,13 @@ function ProjectScreenshot({
   screenshots,
   alt,
   title,
+  labels,
 }: {
   screenshot?: string | null
   screenshots?: string[]
   alt: string
   title: string
+  labels: { preview: string; screenshotPlaceholder: string }
 }) {
   if (screenshots && screenshots.length > 0) {
     return <ScreenshotCarousel screenshots={screenshots} alt={alt} />
@@ -104,9 +132,9 @@ function ProjectScreenshot({
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-background/70 via-transparent to-transparent" />
 
       <div className="relative flex h-full w-full flex-col justify-end p-6">
-        <p className="text-xs font-semibold tracking-widest text-foreground/50 uppercase">Preview</p>
+        <p className="text-xs font-semibold tracking-widest text-foreground/50 uppercase">{labels.preview}</p>
         <p className="mt-2 text-lg font-semibold text-foreground">{title}</p>
-        <p className="mt-1 text-sm text-foreground/60">Screenshot зураг нэмэхэд автоматаар энд харагдана.</p>
+        <p className="mt-1 text-sm text-foreground/60">{labels.screenshotPlaceholder}</p>
       </div>
     </div>
   )
@@ -164,7 +192,8 @@ function getDemoEmbedUrl(input?: string | null) {
   return null
 }
 
-export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry }) {
+export function ProjectDetailsDialogTrigger({ project, locale }: { project: ProjectEntry; locale: Locale }) {
+  const t = locale === "en" ? COPY.en : COPY.mn
   const [open, setOpen] = useState(false)
 
   const hasLive = Boolean(project.live && project.live !== "#")
@@ -178,8 +207,8 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
         type="button"
         onClick={() => setOpen(true)}
         className="text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 rounded-md"
-        aria-label="Дэлгэрэнгүй"
-        title="Дэлгэрэнгүй"
+        aria-label={t.details}
+        title={t.details}
       >
         <ExternalLink className="h-5 w-5" />
       </button>
@@ -188,7 +217,7 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
         open={open}
         onOpenChange={setOpen}
         title={project.title}
-        description="Төслийн дэлгэрэнгүй"
+        description={t.modalDescription}
         size="lg"
         headerActions={
           hasLive ? (
@@ -202,25 +231,31 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
         }
       >
         <div className="space-y-8">
-          <ProjectScreenshot screenshot={project.details.screenshot} screenshots={project.details.screenshots} alt={screenshotAlt} title={project.title} />
+          <ProjectScreenshot
+            screenshot={project.details.screenshot}
+            screenshots={project.details.screenshots}
+            alt={screenshotAlt}
+            title={project.title}
+            labels={{ preview: t.preview, screenshotPlaceholder: t.screenshotPlaceholder }}
+          />
 
           <div className={cx("grid gap-8 items-start", demoVideoSrc ? "lg:grid-cols-[1fr_320px]" : false)}>
             <div className="grid gap-8 items-start md:grid-cols-2">
               <div className="space-y-8">
                 <section>
-                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Project юу хийдэг</h4>
+                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{t.whatItDoes}</h4>
                   <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.whatItDoes}</p>
                 </section>
 
                 <section>
-                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Ямар асуудал шийдсэн</h4>
+                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{t.problemSolved}</h4>
                   <p className="mt-3 text-sm leading-relaxed text-foreground/80">{project.details.problemSolved}</p>
                 </section>
               </div>
 
               <div className="space-y-8">
                 <section>
-                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">Гол features</h4>
+                  <h4 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{t.features}</h4>
                   <ul className="mt-3 space-y-2 text-sm text-foreground/80">
                     {project.details.features.map((feature) => (
                       <li key={feature} className="flex gap-3">
@@ -232,7 +267,7 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
                 </section>
 
                 <div className="rounded-2xl border border-border/60 bg-secondary/30 p-5">
-                  <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">Ашигласан tech</p>
+                  <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">{t.tech}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.details.tech.map((tech) => (
                       <span
@@ -253,7 +288,7 @@ export function ProjectDetailsDialogTrigger({ project }: { project: ProjectEntry
             {demoVideoSrc ? (
               <aside className="space-y-6">
                 <div className="rounded-2xl border border-border/60 bg-secondary/30 p-5">
-                  <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">Туршилтын видео</p>
+                  <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">{t.demoVideo}</p>
                   <div className="mt-4 overflow-hidden rounded-2xl border border-border/60 bg-background">
                     <div className="mx-auto max-w-[240px]">
                       <div className="relative aspect-[9/16] w-full">

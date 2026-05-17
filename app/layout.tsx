@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import type { Viewport } from "next";
+import { cookies } from "next/headers";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import LoadingScreen from "./components/loading-screen";
+import { resolveLocale } from "./i18n";
 
 const themeInitScript = `(() => {
   try {
@@ -35,14 +37,17 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const locale = resolveLocale(cookieStore.get("lang")?.value);
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning // 1. Энд хэвээр үлдэнэ
     >

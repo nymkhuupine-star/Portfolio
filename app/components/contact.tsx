@@ -1,13 +1,87 @@
 "use client"
 
 import { useState } from "react"
+import type { Locale } from "../i18n"
 import {
   ExpandableScreen,
   ExpandableScreenContent,
   ExpandableScreenTrigger,
 } from "./ui/expandable-screen"
 
-export function Contact() {
+const COPY = {
+  mn: {
+    alertRequired: "Шаардлагатай талбаруудыг бөглөнө үү.",
+    alertCompanyRequired: "Байгууллагын нэрийг оруулна үү.",
+    badge: "Хамтран ажиллацгаая",
+    title: "Холбоо барих",
+    description:
+      "Шинэ төсөл эхлүүлэх, бизнесийнхээ борлуулалтыг өсгөх вэб сайт хийлгэх бол чөлөөтэй холбогдоорой. Таны санааг бодит болгоход бэлэн байна.",
+    location: "Улаанбаатар, Монгол",
+    previewEyebrow: "Холбоо барих форм",
+    previewTitle: "Мессеж үлдээх",
+    previewDescription: "Энд дарж формыг бүтэн дэлгэцээр нээнэ үү. Esc дарж хаах боломжтой.",
+    openForm: "Форм нээх",
+    close: "Хаах",
+    formTitle: "Мессеж үлдээх",
+    formSubtitlePrefix: "Би утсан дээрээ шууд хүлээж авдаг тул ихэвчлэн",
+    formSubtitleTime: "1-2 цагийн дотор",
+    formSubtitleSuffix: "хариу өгнө.",
+    whoAreYou: "Та хэн бэ? *",
+    individual: "Хувь хүн",
+    company: "Байгууллага",
+    name: "Нэр *",
+    namePlaceholder: "Таны нэр",
+    email: "Имэйл *",
+    phone: "Утасны дугаар *",
+    companyName: "Байгууллагын нэр *",
+    companyPlaceholder: "Компанийн нэрээ оруулна уу",
+    message: "Мессеж *",
+    messagePlaceholder: "Ямар чиглэлийн вэб сайт хийлгэх хүсэлтэй байгаагаа бичээрэй...",
+    success: "Амжилттай илгээгдлээ. Танд тун удахгүй хариу өгөх болно!",
+    error: "Илгээхэд алдаа гарлаа. Дахин оролдох эсвэл шууд имэйлээр холбогдоно уу.",
+    sending: "Илгээж байна...",
+    send: "Мессеж илгээх",
+    phoneLabel: "Утас",
+  },
+  en: {
+    alertRequired: "Please fill in the required fields.",
+    alertCompanyRequired: "Please enter your company name.",
+    badge: "Let’s work together",
+    title: "Get in touch",
+    description:
+      "Starting a new project or need a website to grow your business? Feel free to reach out—I’m ready to bring your ideas to life.",
+    location: "Ulaanbaatar, Mongolia",
+    previewEyebrow: "Contact form",
+    previewTitle: "Leave a message",
+    previewDescription: "Click here to open the form in full screen. Press Esc to close.",
+    openForm: "Open form",
+    close: "Close",
+    formTitle: "Leave a message",
+    formSubtitlePrefix: "I receive messages on my phone, so I usually respond within",
+    formSubtitleTime: "1–2 hours",
+    formSubtitleSuffix: ".",
+    whoAreYou: "I am a *",
+    individual: "Individual",
+    company: "Company",
+    name: "Name *",
+    namePlaceholder: "Your name",
+    email: "Email *",
+    phone: "Phone number *",
+    companyName: "Company name *",
+    companyPlaceholder: "Enter your company name",
+    message: "Message *",
+    messagePlaceholder: "Tell me what you’d like to build…",
+    success: "Message sent successfully. I’ll get back to you shortly!",
+    error: "Something went wrong. Please try again, or reach out via email.",
+    sending: "Sending…",
+    send: "Send message",
+    phoneLabel: "Phone",
+  },
+}
+
+export function Contact({ locale }: { locale: Locale }) {
+  const t = locale === "en" ? COPY.en : COPY.mn
+
   // Формын датаг хадгалах state-үүд
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -22,15 +96,15 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!name || !email || !phone || !message) return alert("Шаардлагатай талбаруудыг бөглөнө үү.")
-    if (clientType === "company" && !company) return alert("Байгууллагын нэрийг оруулна үү.")
+    if (!name || !email || !phone || !message) return alert(t.alertRequired)
+    if (clientType === "company" && !company) return alert(t.alertCompanyRequired)
 
     setLoading(true)
     setStatus("idle")
 
     try {
       // Имэйл болон утасны дугаарыг компанитай нь нэгтгэж текст үүсгэх
-      const baseContact = `${email} | Утас: ${phone}`;
+      const baseContact = `${email} | ${t.phoneLabel}: ${phone}`;
       const contactInfo = clientType === "company" ? `${baseContact} (${company})` : baseContact;
 
       const response = await fetch("/api/contact", {
@@ -72,17 +146,17 @@ return (
         <div>
           <span className="inline-flex items-center gap-x-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 dark:bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Хамтран ажиллацгаая
+            {t.badge}
           </span>
         </div>
 
         {/* Гарчиг (Гөлгөр уусөлттэй) */}
         <div className="space-y-4">
           <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl bg-gradient-to-b from-foreground via-foreground/90 to-foreground/60 bg-clip-text text-transparent">
-            Холбоо барих
+            {t.title}
           </h2>
           <p className="text-base leading-relaxed text-foreground/60 sm:text-lg">
-            Шинэ төсөл эхлүүлэх, бизнесийнхээ борлуулалтыг өсгөх вэб сайт хийлгэх бол чөлөөтэй холбогдоорой. Таны санааг бодит болгоход бэлэн байна.
+            {t.description}
           </p>
         </div>
 
@@ -107,7 +181,7 @@ return (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
               </svg>
             </div>
-            <span className="font-medium">Улаанбаатар, Монгол</span>
+            <span className="font-medium">{t.location}</span>
           </div>
         </div>
       </div>
@@ -128,14 +202,14 @@ return (
 
 
             <div className="relative z-10">
-              <p className="text-xs font-semibold tracking-wider text-foreground/40 uppercase">Contact Form</p>
-              <h3 className="mt-3 text-2xl font-bold text-foreground tracking-tight">Мессеж үлдээх</h3>
+              <p className="text-xs font-semibold tracking-wider text-foreground/40 uppercase">{t.previewEyebrow}</p>
+              <h3 className="mt-3 text-2xl font-bold text-foreground tracking-tight">{t.previewTitle}</h3>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-foreground/50">
-                Энд дарж формыг бүтэн дэлгэцээр нээнэ үү. Esc дарж хаах боломжтой.
+                {t.previewDescription}
               </p>
 
               <div className="mt-6 inline-flex items-center justify-center gap-x-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-sm transition-all duration-200 hover:bg-foreground/90 group-hover:translate-x-0.5">
-                <span>Форм нээх</span>
+                <span>{t.openForm}</span>
                 <svg className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -145,11 +219,13 @@ return (
         </ExpandableScreenTrigger>
 
 
-          <ExpandableScreenContent className="bg-background/95 backdrop-blur-md" closeButtonLabel="Хаах">
+          <ExpandableScreenContent className="bg-background/95 backdrop-blur-md" closeButtonLabel={t.close}>
             <div className="mx-auto w-full max-w-xl px-4 py-12 sm:px-0">
-              <h3 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Мессеж үлдээх</h3>
+              <h3 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{t.formTitle}</h3>
               <p className="mt-3 text-sm text-foreground/60 leading-relaxed">
-                Би утсан дээрээ шууд хүлээж авдаг тул ихэвчлэн <span className="font-semibold text-foreground">1-2 цагийн дотор</span> хариу өгнө.
+                {t.formSubtitlePrefix}{" "}
+                <span className="font-semibold text-foreground">{t.formSubtitleTime}</span>{" "}
+                {t.formSubtitleSuffix}
               </p>
 
               <div className="relative mt-8 overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.01] p-6 shadow-sm sm:p-8">
@@ -162,7 +238,7 @@ return (
                   
                   {/* Төрөл сонгох хэсэг */}
                   <div className="space-y-2">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">Та хэн бэ? *</label>
+                    <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">{t.whoAreYou}</label>
                     <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
@@ -176,7 +252,7 @@ return (
                         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
-                        <span>Хувь хүн</span>
+                        <span>{t.individual}</span>
                       </button>
                       
                       <button
@@ -191,20 +267,20 @@ return (
                         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
-                        <span>Байгууллага</span>
+                        <span>{t.company}</span>
                       </button>
                     </div>
                   </div>
 
                   {/* Нэр оруулах хэсэг */}
                   <div className="space-y-2">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">Нэр *</label>
+                    <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">{t.name}</label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Таны нэр"
+                      placeholder={t.namePlaceholder}
                       className="w-full rounded-xl border border-foreground/10 bg-background px-4 py-3 text-sm text-foreground shadow-sm outline-none placeholder:text-foreground/30 transition-all duration-200 focus:border-foreground/30 focus:ring-1 focus:ring-foreground/20"
                     />
                   </div>
@@ -212,7 +288,7 @@ return (
                   {/* ШИНЭЧЛЭГДСЭН: Имэйл болон Утасны дугаарыг 2 багана болгов */}
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">Имэйл *</label>
+                      <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">{t.email}</label>
                       <input
                         type="email"
                         required
@@ -224,7 +300,7 @@ return (
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">Утасны дугаар *</label>
+                      <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">{t.phone}</label>
                       <input
                         type="tel"
                         required
@@ -239,25 +315,25 @@ return (
                   {/* Нөхцөлт талбар: Зөвхөн "Байгууллага" сонгосон үед харагдана */}
                   {clientType === "company" && (
                     <div className="space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
-                      <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">Байгууллагын нэр *</label>
+                      <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">{t.companyName}</label>
                       <input
                         type="text"
                         required
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
-                        placeholder="Компанийн нэрээ оруулна уу"
+                        placeholder={t.companyPlaceholder}
                         className="w-full rounded-xl border border-foreground/10 bg-background px-4 py-3 text-sm text-foreground shadow-sm outline-none placeholder:text-foreground/30 transition-all duration-200 focus:border-foreground/30 focus:ring-1 focus:ring-foreground/20"
                       />
                     </div>
                   )}
 
                   <div className="space-y-2">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">Мессеж *</label>
+                    <label className="text-xs font-semibold uppercase tracking-wider text-foreground/60">{t.message}</label>
                     <textarea
                       required
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Ямар чиглэлийн вэб сайт хийлгэх хүсэлтэй байгаагаа бичээрэй..."
+                      placeholder={t.messagePlaceholder}
                       className="min-h-[140px] w-full resize-none rounded-xl border border-foreground/10 bg-background px-4 py-3 text-sm text-foreground shadow-sm outline-none placeholder:text-foreground/30 transition-all duration-200 focus:border-foreground/30 focus:ring-1 focus:ring-foreground/20"
                     />
                   </div>
@@ -267,7 +343,7 @@ return (
                       <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>Амжилттай илгээгдлээ. Танд тун удахгүй хариу өгөх болно!</span>
+                      <span>{t.success}</span>
                     </div>
                   )}
                   {status === "error" && (
@@ -275,7 +351,7 @@ return (
                       <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                      <span>Илгээхэд алдаа гарлаа. Дахин оролдох эсвэл шууд имэйлээр холбогдоно уу.</span>
+                      <span>{t.error}</span>
                     </div>
                   )}
 
@@ -290,7 +366,7 @@ return (
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
                     )}
-                    <span>{loading ? "Илгээж байна..." : "Мессеж илгээх"}</span>
+                    <span>{loading ? t.sending : t.send}</span>
                   </button>
                 </form>
               </div>

@@ -1,10 +1,16 @@
 import { Code2, Lightbulb, Users } from "lucide-react"
+import type { Locale } from "../i18n"
+
+type LocalizedText = Record<Locale, string>
 
 const highlights = [
   {
     icon: Code2,
-    title: "Веб хөгжүүлэлт",
-    description: "Хэрэгцээнд тохирсон, функциональ, цэвэр кодтой веб сайт болон веб апп хөгжүүлнэ",
+    title: { mn: "Веб хөгжүүлэлт", en: "Web development" } satisfies LocalizedText,
+    description: {
+      mn: "Хэрэгцээнд тохирсон, функциональ, цэвэр кодтой веб сайт болон веб апп хөгжүүлнэ",
+      en: "Develop websites and web applications that are usable, functional, and cleanly coded.",
+    } satisfies LocalizedText,
     // Карт бүрийн гэрэлтэх өнгөний Tailwind классуудыг массивт нэмэв
     glowClass: "border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]",
     glowBg: "bg-blue-500/10",
@@ -12,23 +18,48 @@ const highlights = [
   },
   {
     icon: Lightbulb,
-    title: "Responsive дизайн",
-    description: "Бүх төхөөрөмж дээр зөв харагдах, хэрэглэгчийн туршлагад төвлөрсөн responsive дизайн хийнэ",
+    title: { mn: "Responsive дизайн", en: "Responsive design" } satisfies LocalizedText,
+    description: {
+      mn: "Бүх төхөөрөмж дээр зөв харагдах, хэрэглэгчийн туршлагад төвлөрсөн responsive дизайн хийнэ",
+      en: "Create a responsive design that looks good on any device and focuses on the entire user experience",
+    } satisfies LocalizedText,
     glowClass: "border-green-500/20 shadow-[0_0_20px_rgba(32,192,92,0.05)] hover:border-green-500/40 hover:shadow-[0_0_30px_rgba(32,192,92,0.15)]",
     glowBg: "bg-green-500/10",
     iconColor: "text-green-500"
   },
   {
     icon: Users,
-    title: "Хамтран ажиллах",
-    description: "Таны санааг бодит болгоход нээлттэй, хариуцлагатай хамтарч ажиллахад бэлэн байна",
+    title: { mn: "Хамтран ажиллах", en: "Collaboration" } satisfies LocalizedText,
+    description: {
+      mn: "Таны санааг бодит болгоход нээлттэй, хариуцлагатай хамтарч ажиллахад бэлэн байна",
+      en: "We are ready to work with you in an open and responsible manner to make your ideas a reality.",
+    } satisfies LocalizedText,
     glowClass: "border-amber-500/20 shadow-[0_0_20px_rgba(255,194,51,0.05)] hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(255,194,51,0.15)]",
     glowBg: "bg-amber-500/10",
     iconColor: "text-amber-500"
   },
 ]
 
-export function About() {
+const COPY = {
+  mn: {
+    eyebrow: "Миний тухай",
+    title: "Орчин үеийн технологи, өндөр гүйцэтгэлтэй вэб шийдлүүд",
+    p1: "Би Next.js, React болон Tailwind CSS ашиглан хурдан, ойлгомжтой, хэрэглэгчид ээлтэй вэб сайт болон dashboard хөгжүүлдэг Full-stack хөгжүүлэгч юм.",
+    p2: "Бизнесийн вэб сайт, портфолио болон админ системүүдийг цэвэрхэн дизайн, зөв бүтэцтэйгээр гүйцэтгэдэг.",
+    p3: "Миний зорилго бол зөвхөн код бичих биш, ашиглахад хялбар, найдвартай, бодит үнэ цэн авчрах бүтээгдэхүүн бүтээхэд оршино.",
+  },
+  en: {
+    eyebrow: "About",
+    title: "Modern technology, high-performance web solutions",
+    p1: "I’m a full-stack developer who builds fast, intuitive websites and dashboards using Next.js, React, and Tailwind CSS.",
+    p2: "I deliver business websites, portfolios, and admin systems with clean design and a solid, maintainable structure.",
+    p3: "My goal isn’t just to write code—it’s to build products that are easy to use, reliable, and create real value.",
+  },
+}
+
+export function About({ locale }: { locale: Locale }) {
+  const t = locale === "en" ? COPY.en : COPY.mn
+
   return (
     <section id="about" className="relative overflow-hidden px-4 py-24 sm:px-8 sm:py-28">
       <div className="max-w-6xl mx-auto">
@@ -36,20 +67,15 @@ export function About() {
           {/* ЗҮҮН ТАЛ: ТЕКСТ ХЭСЭГ */}
           <div>
             <p className="text-sm font-semibold text-primary mb-4 tracking-widest uppercase">
-              Миний тухай
+              {t.eyebrow}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-              Орчин үеийн дизайн болон хурдан ажиллагаатай веб сайт бүтээдэг
+             {t.title}
             </h2>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
-              <p>
-               Би Next.js, React, Tailwind CSS ашиглан хурдан, ойлгомжтой, хэрэглэгчдэд ээлтэй вэб сайт болон dashboard хөгжүүлдэг full-stack developer.
-              </p>
-              <p>
-               Business website, portfolio, landing page, admin dashboard зэрэг веб шийдлүүдийг цэвэрхэн дизайн болон responsive бүтэцтэйгээр хөгжүүлдэг. </p>
-              <p>
-                Миний зорилго бол зөвхөн гоё харагдах биш, ашиглахад амар, найдвартай, бодит хэрэгцээ шийддэг бүтээгдэхүүн бүтээх юм.
-              </p>
+              <p>{t.p1}</p>
+              <p>{t.p2}</p>
+              <p>{t.p3}</p>
             </div>
           </div>
           
@@ -70,8 +96,8 @@ export function About() {
 
                 {/* Текст хэсэг */}
                 <div className="relative z-10">
-                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title[locale]}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description[locale]}</p>
                 </div>
               </div>
             ))}
