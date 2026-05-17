@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section
       id="top"
-      className="flex w-full items-center md:min-h-[calc(100svh-80px)]"
+      className="flex w-full overflow-x-hidden items-center md:min-h-[calc(100svh-80px)]"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 md:flex-row md:justify-between">
         {/* LEFT TEXT */}
@@ -61,8 +61,8 @@ export default function HeroSection() {
         </div>
 
       {/* RIGHT IMAGE */}
-<div className="relative mt-6 w-full max-w-sm overflow-visible pt-36 md:mt-0 md:w-[42%] md:overflow-visible md:pt-40">
-  <div className="relative mx-auto w-[90%]">
+      <div className="relative mt-8 w-full max-w-[22rem] overflow-visible pt-28 sm:mt-10 sm:max-w-sm sm:pt-32 md:mt-0 md:w-[42%] md:max-w-none md:pt-40">
+        <div className="relative mx-auto w-full sm:w-[90%]">
     
     {/* ХӨДӨЛГӨӨНГҮЙ, ЦЭВЭРХЭН АРЫН СҮҮДЭР БА ЗУРААСНУУД */}
     <div className="pointer-events-none absolute inset-0 z-0">
@@ -200,7 +200,7 @@ export default function HeroSection() {
             alt="Earphones"
             width={280}
             height={888}
-            className="pointer-events-none absolute right-2 top-[118px] z-20 w-[22%] rotate-6 md:right-4 md:top-[-51px] md:w-[24%]"
+            className="pointer-events-none absolute right-2 top-[180px] z-20 hidden w-[22%] rotate-6 md:block md:right-4 md:top-[120px] md:w-[24%]"
             style={{ clipPath: "inset(12% 0 0 0)" }}
           />
         </div>

@@ -89,6 +89,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -397,6 +399,12 @@ body {
   opacity: 0.26;
   filter: saturate(0.62) contrast(1.02) brightness(0.97) blur(1.1px);
   transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+  .site-background::before {
+    transform: none;
+  }
 }
 
 .site-background::after {
