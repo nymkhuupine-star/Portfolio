@@ -4,7 +4,7 @@ import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
 
 import Header from "./components/header";
-import HeroSection from "./components/herosection";
+import HeroSection from "./components/hero-section";
 import { Projects } from "./components/project";
 import { Skills } from "./components/skills";
 import { cookies } from "next/headers";

@@ -6,53 +6,89 @@ type LocalizedText = Record<Locale, string>
 const highlights = [
   {
     icon: Code2,
-    title: { mn: "Веб хөгжүүлэлт", en: "Web development" } satisfies LocalizedText,
+    title: {
+      mn: "Веб хөгжүүлэлт",
+      en: "Web development",
+    } satisfies LocalizedText,
+
     description: {
       mn: "Хэрэгцээнд тохирсон, функциональ, цэвэр кодтой веб сайт болон веб апп хөгжүүлнэ",
       en: "Develop websites and web applications that are usable, functional, and cleanly coded.",
     } satisfies LocalizedText,
-    // Карт бүрийн гэрэлтэх өнгөний Tailwind классуудыг массивт нэмэв
-    glowClass: "border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]",
+
+    glowClass:
+      "border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.05)] hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]",
+
     glowBg: "bg-blue-500/10",
-    iconColor: "text-blue-500"
+
+    iconColor: "text-blue-500",
   },
+
   {
     icon: Lightbulb,
-    title: { mn: "Responsive дизайн", en: "Responsive design" } satisfies LocalizedText,
+
+    title: {
+      mn: "Responsive дизайн",
+      en: "Responsive design",
+    } satisfies LocalizedText,
+
     description: {
       mn: "Бүх төхөөрөмж дээр зөв харагдах, хэрэглэгчийн туршлагад төвлөрсөн responsive дизайн хийнэ",
       en: "Create a responsive design that looks good on any device and focuses on the entire user experience",
     } satisfies LocalizedText,
-    glowClass: "border-green-500/20 shadow-[0_0_20px_rgba(32,192,92,0.05)] hover:border-green-500/40 hover:shadow-[0_0_30px_rgba(32,192,92,0.15)]",
+
+    glowClass:
+      "border-green-500/20 shadow-[0_0_20px_rgba(32,192,92,0.05)] hover:border-green-500/40 hover:shadow-[0_0_30px_rgba(32,192,92,0.15)]",
+
     glowBg: "bg-green-500/10",
-    iconColor: "text-green-500"
+
+    iconColor: "text-green-500",
   },
+
   {
     icon: Users,
-    title: { mn: "Хамтран ажиллах", en: "Collaboration" } satisfies LocalizedText,
+
+    title: {
+      mn: "Хамтран ажиллах",
+      en: "Collaboration",
+    } satisfies LocalizedText,
+
     description: {
       mn: "Таны санааг бодит болгоход нээлттэй, хариуцлагатай хамтарч ажиллахад бэлэн байна",
       en: "We are ready to work with you in an open and responsible manner to make your ideas a reality.",
     } satisfies LocalizedText,
-    glowClass: "border-amber-500/20 shadow-[0_0_20px_rgba(255,194,51,0.05)] hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(255,194,51,0.15)]",
+
+    glowClass:
+      "border-amber-500/20 shadow-[0_0_20px_rgba(255,194,51,0.05)] hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(255,194,51,0.15)]",
+
     glowBg: "bg-amber-500/10",
-    iconColor: "text-amber-500"
+
+    iconColor: "text-amber-500",
   },
 ]
 
 const COPY = {
   mn: {
     eyebrow: "Миний тухай",
+
     title: "Орчин үеийн технологи, өндөр гүйцэтгэлтэй вэб шийдлүүд",
+
     p1: "Би Next.js, React болон Tailwind CSS ашиглан хурдан, ойлгомжтой, хэрэглэгчид ээлтэй вэб сайт болон dashboard хөгжүүлдэг Full-stack хөгжүүлэгч юм.",
+
     p2: "Бизнесийн вэб сайт, портфолио болон админ системүүдийг цэвэрхэн дизайн, зөв бүтэцтэйгээр гүйцэтгэдэг.",
+
     p3: "Миний зорилго бол зөвхөн код бичих биш, ашиглахад хялбар, найдвартай, бодит үнэ цэн авчрах бүтээгдэхүүн бүтээхэд оршино.",
   },
+
   en: {
     eyebrow: "About",
+
     title: "Modern technology, high-performance web solutions",
+
     p1: "I’m a full-stack developer who builds fast, intuitive websites and dashboards using Next.js, React, and Tailwind CSS.",
+
     p2: "I deliver business websites, portfolios, and admin systems with clean design and a solid, maintainable structure.",
+
     p3: "My goal isn’t just to write code—it’s to build products that are easy to use, reliable, and create real value.",
   },
 }
@@ -60,44 +96,75 @@ const COPY = {
 export function About({ locale }: { locale: Locale }) {
   const t = locale === "en" ? COPY.en : COPY.mn
 
-  return (
-    <section id="about" className="relative overflow-hidden px-4 py-24 sm:px-8 sm:py-28">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* ЗҮҮН ТАЛ: ТЕКСТ ХЭСЭГ */}
+    return (
+      <section
+      id="about"
+      className="relative -mt-24 overflow-hidden bg-background px-4 pt-40 pb-24 sm:px-8 sm:pt-44 sm:pb-28 dark:bg-[#020617]"
+    >
+      {/* HERO -> ABOUT SMOOTH BLEND */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-gradient-to-b from-background via-background/95 to-transparent dark:from-[#020617] dark:via-[#020617]/95" />
+
+      {/* EXTRA GLOW */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(800px_300px_at_35%_0%,rgba(168,85,247,0.12),transparent_70%),radial-gradient(700px_280px_at_70%_0%,rgba(56,189,248,0.10),transparent_70%)]" />
+
+      {/* BACKGROUND ORBS */}
+      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+        <div className="absolute left-[-10%] top-[10%] h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-3xl" />
+
+        <div className="absolute right-[-10%] top-[20%] h-[380px] w-[380px] rounded-full bg-indigo-500/10 blur-3xl" />
+
+        <div className="absolute bottom-[-10%] left-[35%] h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-3xl" />
+      </div>
+
+      <div className="mx-auto max-w-6xl">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* LEFT SIDE */}
           <div>
-            <p className="text-sm font-semibold text-primary mb-4 tracking-widest uppercase">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary/90">
               {t.eyebrow}
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-             {t.title}
+
+            <h2 className="mb-6 text-3xl font-bold leading-tight text-foreground md:text-5xl dark:text-white">
+              {t.title}
             </h2>
-            <div className="space-y-5 text-muted-foreground leading-relaxed">
+
+            <div className="space-y-5 leading-relaxed text-muted-foreground dark:text-white/65">
               <p>{t.p1}</p>
+
               <p>{t.p2}</p>
+
               <p>{t.p3}</p>
             </div>
           </div>
-          
-          {/* БАРУУН ТАЛ: ГЭРЭЛТЭХ ХҮРЭЭТЭЙ 3 КАРТ */}
+
+          {/* RIGHT SIDE CARDS */}
           <div className="space-y-6 lg:pt-4">
             {highlights.map((item, index) => (
-              <div 
+              <div
                 key={index}
-                className={`relative overflow-hidden flex gap-5 p-5  rounded-[28px] bg-card/60 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${item.glowClass}`}
+                className={`relative overflow-hidden rounded-[28px] border bg-card/80 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 dark:bg-white/[0.03] ${item.glowClass}`}
               >
-                {/* Булангийн зөөлөн неон туяа (Glow Effect) */}
-                <div className={`absolute -right-8 -top-8 h-20 w-20 rounded-full blur-2xl opacity-70 ${item.glowBg}`} />
+                {/* CARD GLOW */}
+                <div
+                  className={`absolute -right-8 -top-8 h-20 w-20 rounded-full blur-2xl opacity-70 ${item.glowBg}`}
+                />
 
-                {/* Икон хэсэг - Өнгө нь карт бүрийн хүрээтэй ижилссэн */}
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-foreground/5 border border-foreground/5 flex items-center justify-center relative z-10">
-                  <item.icon className={`w-6 h-6 ${item.iconColor}`} />
-                </div>
+                <div className="relative z-10 flex gap-5">
+                  {/* ICON */}
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-foreground/10 bg-foreground/[0.03] dark:border-white/5 dark:bg-white/5">
+                    <item.icon className={`h-6 w-6 ${item.iconColor}`} />
+                  </div>
 
-                {/* Текст хэсэг */}
-                <div className="relative z-10">
-                  <h3 className="font-semibold text-foreground mb-1">{item.title[locale]}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description[locale]}</p>
+                  {/* TEXT */}
+                  <div>
+                    <h3 className="mb-1 font-semibold text-foreground dark:text-white">
+                      {item.title[locale]}
+                    </h3>
+
+                    <p className="text-sm leading-relaxed text-muted-foreground dark:text-white/60">
+                      {item.description[locale]}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}

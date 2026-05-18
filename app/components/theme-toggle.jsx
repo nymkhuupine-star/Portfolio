@@ -105,7 +105,9 @@ export default function ThemeToggle() {
   const toggle = () => {
     const isDark = document.documentElement.classList.contains("dark");
     const next = isDark ? "light" : "dark";
-    localStorage.setItem(STORAGE_KEY, next);
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch {}
     applyTheme(next);
   };
 

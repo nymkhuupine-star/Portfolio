@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type { Viewport } from "next";
 import { cookies } from "next/headers";
 import Script from "next/script";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import LoadingScreen from "./components/loading-screen";
 import { resolveLocale } from "./i18n";
@@ -15,11 +14,6 @@ const themeInitScript = `(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
   } catch (e) {}
 })();`;
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Pine Nymkhuu — Full Stack Developer Portfolio",
@@ -48,7 +42,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} h-full antialiased`}
+      className="h-full antialiased"
       suppressHydrationWarning // 1. Энд хэвээр үлдэнэ
     >
       {/* 2. ШИНЭЧЛЭГДСЭН: Броузерын өргөтгөлүүдийн алдааг дарахын тулд body дээр нэмэв */}
