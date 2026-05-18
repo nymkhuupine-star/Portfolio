@@ -101,12 +101,16 @@ const PROJECTS: Record<Locale, ProjectEntry[]> = {
   },
   {
     date: "2026",
-    version: "0.9",
+    version: "LIVE",
     title: "SmartExam",
     description:
       "AI болон proctoring технологи ашигласан online exam болон learning management system. Багш шалгалт үүсгэж, сурагч онлайнаар шалгалт өгч, систем автоматаар дүн болон тайлан боловсруулдаг.",
     tags: ["Next.js", "OpenAI", "Supabase", "TypeScript", "Tailwind CSS"],
-    highlights: ["Streaming responses + abort", "Conversation context + persistence", "Multi-language UX + prompt presets"],
+     highlights: [
+        "Role-based online exam system",
+        "AI proctoring / cheating detection",
+        "Teacher, student, admin dashboard",
+      ],
     github: "#",
     live: "https://pinequest-e2-team-8.vercel.app/",
     details: {
@@ -257,9 +261,9 @@ const PROJECTS: Record<Locale, ProjectEntry[]> = {
         "An AI-powered online exam and learning management system (LMS) with proctoring. Teachers create and assign exams, students take them online, and the system generates scores and reports automatically.",
       tags: ["Next.js", "OpenAI", "Supabase", "TypeScript", "Tailwind CSS"],
       highlights: [
-        "Streaming responses + abort",
-        "Conversation context + persistence",
-        "Multi-language UX + prompt presets",
+        "Role-based online exam system",
+        "AI proctoring / cheating detection",
+        "Teacher, student, admin dashboard",
       ],
       github: "#",
       live: "https://pinequest-e2-team-8.vercel.app/",
