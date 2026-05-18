@@ -96,26 +96,11 @@ const COPY = {
 export function About({ locale }: { locale: Locale }) {
   const t = locale === "en" ? COPY.en : COPY.mn
 
-    return (
-      <section
+  return (
+    <section
       id="about"
-      className="relative -mt-24 overflow-hidden bg-background px-4 pt-40 pb-24 sm:px-8 sm:pt-44 sm:pb-28 dark:bg-[#020617]"
+      className="relative -mt-24 overflow-hidden px-4 pt-40 pb-24 sm:px-8 sm:pt-44 sm:pb-28"
     >
-      {/* HERO -> ABOUT SMOOTH BLEND */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-gradient-to-b from-background via-background/95 to-transparent dark:from-[#020617] dark:via-[#020617]/95" />
-
-      {/* EXTRA GLOW */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(800px_300px_at_35%_0%,rgba(168,85,247,0.12),transparent_70%),radial-gradient(700px_280px_at_70%_0%,rgba(56,189,248,0.10),transparent_70%)]" />
-
-      {/* BACKGROUND ORBS */}
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-        <div className="absolute left-[-10%] top-[10%] h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-3xl" />
-
-        <div className="absolute right-[-10%] top-[20%] h-[380px] w-[380px] rounded-full bg-indigo-500/10 blur-3xl" />
-
-        <div className="absolute bottom-[-10%] left-[35%] h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-3xl" />
-      </div>
-
       <div className="mx-auto max-w-6xl">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* LEFT SIDE */}

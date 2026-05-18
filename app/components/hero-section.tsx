@@ -97,16 +97,7 @@ export default function HeroSection({ locale = "mn" }: { locale?: Locale }) {
   <span className="relative mt-2 block">
     <span className="font-serif italic font-light text-indigo-600 dark:text-indigo-400">Full-Stack Developer</span>
     <br />
-    {/* <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent dark:from-white dark:via-slate-200 dark:to-white">
-      Developer
-    </span> */}
-    {/* Доогуур нь зурагдах бүтээлч шугам */}
-    {/* <motion.div 
-      initial={{ width: 0 }}
-      animate={{ width: "80%" }}
-      transition={{ delay: 1.2, duration: 1 }}
-      className="absolute -bottom-2 left-0 h-[8px] w-[2px] rounded-full bg-indigo-500/10 dark:bg-indigo-400/20"
-    /> */}
+   
   </span>
 </h1>
             
@@ -122,10 +113,7 @@ export default function HeroSection({ locale = "mn" }: { locale?: Locale }) {
                 {t.viewProjects}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <a href="/cv.pdf" className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-8 py-4 text-sm font-bold text-slate-700 shadow-sm backdrop-blur-xl transition-all hover:bg-slate-50 sm:w-auto dark:border-white/10 dark:bg-white/5 dark:text-white">
-                <Download className="h-4 w-4" />
-                {t.downloadCv}
-              </a>
+            
             </motion.div>
           </motion.div>
 
@@ -157,7 +145,7 @@ export default function HeroSection({ locale = "mn" }: { locale?: Locale }) {
   <code className="text-slate-700 dark:text-white/80">
     <span className="text-purple-600 dark:text-blue-400 font-bold">const</span>{" "}
     <span className="text-blue-600 dark:text-yellow-300 font-medium">developer</span>{" = {"} {"\n"}
-    {"  "}<span className="text-pink-500 dark:text-sky-300">name</span>: <span className="text-emerald-600 dark:text-orange-300">&quot;Pine Nymkhuu&quot;</span>,{"\n"}
+    {"  "}<span className="text-pink-500 dark:text-sky-300">name</span>: <span className="text-emerald-600 dark:text-orange-300">&quot;Nymkhuu&quot;</span>,{"\n"}
     {"  "}<span className="text-pink-500 dark:text-sky-300">role</span>: <span className="text-emerald-600 dark:text-orange-300">&quot;Full-Stack Dev&quot;</span>,{"\n"}
     {"  "}<span className="text-pink-500 dark:text-sky-300">skills</span>: [{"\n"}
     {"    "}<span className="text-emerald-600 dark:text-orange-300">&quot;React&quot;</span>, <span className="text-emerald-600 dark:text-orange-300">&quot;Next.js&quot;</span>,{"\n"}
